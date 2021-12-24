@@ -1,3 +1,6 @@
+/demo/node_modules
+/demo/build
+
 # Logs
 logs
 *.log
