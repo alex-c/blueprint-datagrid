@@ -2,5 +2,5 @@
 @import "~@blueprintjs/core/lib/css/blueprint.css";
 
 #app {
-  text-align: center;
+  margin: 100px;
 }

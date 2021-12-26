@@ -1,5 +1,5 @@
 import React from "react";
-import { HTMLTable } from "@blueprintjs/core";
+import { HTMLTable, HTMLTableProps } from "@blueprintjs/core";
 
 export interface BlueprintDatagridColumnDefinition {
   dataField: string;
@@ -12,14 +12,24 @@ export interface BlueprintDatagridProps<T> {
 }
 
 const BlueprintDatagrid = <T extends unknown>(
-  props: BlueprintDatagridProps<T>
+  props: BlueprintDatagridProps<T> & HTMLTableProps
 ): JSX.Element => {
   return (
-    <HTMLTable>
+    <HTMLTable
+      {...props}
+      style={
+        props.bordered
+          ? {
+              boxShadow:
+                "rgba(17, 20, 24, 0.15) 0px 0px 0px 1px, rgba(17, 20, 24, 0) 0px 0px 0px, rgba(17, 20, 24, 0) 0px 0px 0px",
+            }
+          : {}
+      }
+    >
       <thead>
         <tr>
           {props.columnDefinitions.map((columnDefinition) => (
-            <td>{columnDefinition.label}</td>
+            <th>{columnDefinition.label}</th>
           ))}
         </tr>
       </thead>
