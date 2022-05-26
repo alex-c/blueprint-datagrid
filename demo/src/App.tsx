@@ -1,18 +1,17 @@
 import React from "react";
-import { Column, ColumnType, Datagrid } from "../../build";
-import { useAppSelector } from "./app/hooks";
+import { ExBasicColumns } from "./examples/ex-basic-columns";
+import { Header } from "./header";
 import "./app.scss";
+import { H1 } from "@blueprintjs/core";
 
 function App() {
-  const { users } = useAppSelector(state => state.users);
-
   return (
-    <div>
-      <Datagrid dataSource={users}>
-        <Column field="id" label="ID" />
-        <Column field="name" label="Name" sortable />
-        <Column field="age" label="Age" type={ColumnType.NUMBER} sortable />
-      </Datagrid>
+    <div id="app">
+      <Header />
+      <div id="container">
+        <H1>Basic Functionality</H1>
+        <ExBasicColumns />
+      </div>
     </div>
   );
 }
