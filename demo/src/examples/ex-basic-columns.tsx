@@ -6,7 +6,7 @@ export const ExBasicColumns = () => {
   const { varieties } = useAppSelector(state => state.varieties);
 
   return (
-    <Example id="basic-columns" title="Basic Columns" description="Text, number and boolean columns.">
+    <Example id="ex-basic-columns" title="Basic Columns" description="Text, number and boolean columns.">
       <Datagrid dataSource={varieties}>
         <Column field="name" label="Name" />
         <Column field="species" label="Species" />

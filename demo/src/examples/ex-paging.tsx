@@ -3,13 +3,19 @@ import { Column, ColumnType, Datagrid, Pager } from "../../../build";
 import { useAppSelector } from "../app/hooks";
 import { Example } from "../components/example";
 import { Variety } from "../data/pepper-varieties/pepper-variety-slice";
+import { User } from "../data/users/user-slice";
 
 export const ExPaging = () => {
   const { users } = useAppSelector(state => state.users);
   const { varieties } = useAppSelector(state => state.varieties);
 
+  let manyUsers: User[] = [];
+  for (let i = 0; i < 100; i++) {
+    manyUsers = manyUsers.concat(users);
+  }
+
   return (
-    <Example id="paging" title="Paging">
+    <Example id="ex-paging" title="Paging">
       <p>
         Paging is activated by adding a <Code>Pager</Code> component and setting the mandatory{" "}
         <Code>Pager.elementsPerPage</Code> property.
@@ -43,6 +49,14 @@ export const ExPaging = () => {
         <Column field="shuUpperBound" label="Heat Upper Bound (SHU)" type={ColumnType.NUMBER} />
         <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} />
         <Pager elementsPerPage={5} />
+      </Datagrid>
+      <p className="new-section">With many pages, the pager hides some of the buttons.</p>
+      <Datagrid dataSource={manyUsers}>
+        <Column field="id" label="ID" />
+        <Column field="name" label="Name" sortable />
+        <Column field="age" label="Age" type={ColumnType.NUMBER} sortable />
+        <Column field="enabled" label="Enabled" type={ColumnType.BOOLEAN} sortable />
+        <Pager elementsPerPage={10} />
       </Datagrid>
     </Example>
   );
