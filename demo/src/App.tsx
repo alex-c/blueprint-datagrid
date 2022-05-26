@@ -4,6 +4,7 @@ import { Header } from "./header";
 import { Classes, H1, Menu, MenuItem } from "@blueprintjs/core";
 import { ExBasicColumnsEmpty } from "./examples/ex-basic-columns-empty";
 import "./app.scss";
+import { ExPaging } from "./examples/ex-paging";
 
 function App() {
   return (
@@ -12,15 +13,15 @@ function App() {
       <div id="container">
         <nav id="menu">
           <Menu className={Classes.ELEVATION_1}>
-            <MenuItem text="Basic Columns" />
-            <MenuItem text="No Data" />
-            <MenuItem text="Paging" />
+            <MenuItem text="Basic Columns" href="#basic-columns" />
+            <MenuItem text="No Data" href="#no-data" />
+            <MenuItem text="Paging" href="#paging" />
           </Menu>
         </nav>
         <main id="content">
-          <H1>Basic Functionality</H1>
           <ExBasicColumns />
           <ExBasicColumnsEmpty />
+          <ExPaging />
         </main>
       </div>
     </div>

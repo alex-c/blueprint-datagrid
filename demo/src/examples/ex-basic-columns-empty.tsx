@@ -5,10 +5,8 @@ import { Variety } from "../data/pepper-varieties/pepper-variety-slice";
 
 export const ExBasicColumnsEmpty = () => {
   return (
-    <Example id="basic-columns-empty" title="No Data">
-      <p>
-        A placeholder is rendered using <Code>NonIdealState</Code>, when no data is available.
-      </p>
+    <Example id="no-data" title="No Data">
+      <p>When no data is available, a placeholder is rendered.</p>
       <Datagrid dataSource={[] as Variety[]}>
         <Column field="name" label="Name" />
         <Column field="species" label="Species" />
