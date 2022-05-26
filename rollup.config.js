@@ -35,7 +35,6 @@ export default {
     terser(),
     visualizer({
       filename: "bundle-analysis.html",
-      open: true,
     }),
   ],
 };
