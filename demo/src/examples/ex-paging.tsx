@@ -2,7 +2,7 @@ import { Code } from "@blueprintjs/core";
 import { Column, ColumnType, Datagrid, Pager } from "../../../build";
 import { useAppSelector } from "../app/hooks";
 import { Example } from "../components/example";
-import { Variety } from "../data/pepper-varieties/pepper-variety-slice";
+import { Variety } from "../data/pepper-varieties/pepper-varieties";
 import { User } from "../data/users/user-slice";
 
 export const ExPaging = () => {

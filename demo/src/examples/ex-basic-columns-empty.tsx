@@ -1,7 +1,7 @@
 import { Code } from "@blueprintjs/core";
 import { Column, ColumnType, Datagrid } from "../../../build";
 import { Example } from "../components/example";
-import { Variety } from "../data/pepper-varieties/pepper-variety-slice";
+import { Variety } from "../data/pepper-varieties/pepper-varieties";
 
 export const ExBasicColumnsEmpty = () => {
   return (

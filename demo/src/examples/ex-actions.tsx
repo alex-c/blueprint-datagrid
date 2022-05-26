@@ -3,7 +3,7 @@ import { IconNames } from "@blueprintjs/icons";
 import { Action, Column, ColumnType, Datagrid } from "../../../build";
 import { useAppSelector } from "../app/hooks";
 import { Example } from "../components/example";
-import { Variety } from "../data/pepper-varieties/pepper-variety-slice";
+import { Variety } from "../data/pepper-varieties/pepper-varieties";
 
 const viewVarietyAction = (_: any, variety: Variety) => alert(`Viewing ${variety.name}...`);
 const editVarietyAction = (_: any, variety: Variety) => alert(`Editing ${variety.name}...`);

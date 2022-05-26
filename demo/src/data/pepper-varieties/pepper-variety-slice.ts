@@ -1,13 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import varieties from "./pepper-varieties.json";
-
-export interface Variety {
-  name: string;
-  species: string;
-  shuLowerBound: number;
-  shuUpperBound: number;
-  rare: boolean;
-}
+import { varieties, Variety } from "./pepper-varieties";
 
 interface VarietyState {
   varieties: Variety[];
