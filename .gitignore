@@ -1,5 +1,6 @@
 /demo/node_modules
 /demo/build
+/lib
 
 # Logs
 logs
