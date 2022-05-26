@@ -1,25 +1,10 @@
-# Blueprint Datagrid
+# Blueprint Datagrid Demo
 
-Blueprint Datagrid is an enhanced table component for [Blueprint 4](https://blueprintjs.com/). It adds features like paging, sorting, filtering and more to basic Blueprint tables.
+Contains many examples of the Blueprint Datagrid features, using a local build for quick testing cycles during development.
 
-### Status
+To run:
 
-Blueprint Datagrid is currently in active development. The development progress is being tracked in [this project](https://github.com/users/alex-c/projects/1).
+- Build parent lib project with `npm run build`
+- Run demo app with `npm run start`
 
-## Why
-
-Blueprint has two table components, the basic [HTMLTable](https://blueprintjs.com/docs/#core/components/html-table), that provides Blueprint styling to native HTML tables, and the [Table](https://blueprintjs.com/docs/#table) component, which allows to build highly interactive spreadsheet-like apps.
-
-Blueprint Datagrid aims to hit the middle ground, wrapping the `HTMLTable` and adding common functionality like paging, sorting and filtering.
-
-## Example
-
-TODO
-
-## Features
-
-TODO
-
-## Getting Started
-
-TODO
+You might need to link the demp app's React to the parent project React with `npm link`.
