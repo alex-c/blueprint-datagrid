@@ -53,9 +53,9 @@ export const ExPaging = () => {
       <p className="new-section">With many pages, the pager hides some of the buttons.</p>
       <Datagrid dataSource={manyUsers}>
         <Column field="id" label="ID" />
-        <Column field="name" label="Name" sortable />
-        <Column field="age" label="Age" type={ColumnType.NUMBER} sortable />
-        <Column field="enabled" label="Enabled" type={ColumnType.BOOLEAN} sortable />
+        <Column field="name" label="Name" />
+        <Column field="age" label="Age" type={ColumnType.NUMBER} />
+        <Column field="enabled" label="Enabled" type={ColumnType.BOOLEAN} />
         <Pager elementsPerPage={10} />
       </Datagrid>
     </Example>
