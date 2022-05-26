@@ -40,7 +40,7 @@ export const ExPaging = () => {
         <Pager elementsPerPage={5} />
       </Datagrid>
       <p className="new-section">
-        No data is handled by displaying just one page in the <Code>Pager</Code>.
+        The no data case is handled by displaying just one page in the <Code>Pager</Code>.
       </p>
       <Datagrid dataSource={[] as Variety[]}>
         <Column field="name" label="Name" />

@@ -6,6 +6,7 @@ import { ExBasicColumnsEmpty } from "./examples/ex-basic-columns-empty";
 import { ExPaging } from "./examples/ex-paging";
 import { ExSorting } from "./examples/ex-sorting";
 import "./app.scss";
+import { ExActions } from "./examples/ex-actions";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <MenuItem text="No Data" href="#ex-no-data" />
             <MenuItem text="Paging" href="#ex-paging" />
             <MenuItem text="Sorting" href="#ex-sorting" />
+            <MenuItem text="Actions" href="#ex-actions" />
           </Menu>
         </nav>
         <main id="content">
@@ -25,6 +27,7 @@ function App() {
           <ExBasicColumnsEmpty />
           <ExPaging />
           <ExSorting />
+          <ExActions />
         </main>
       </div>
     </div>
