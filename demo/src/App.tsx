@@ -5,8 +5,9 @@ import { Classes, Menu, MenuItem } from "@blueprintjs/core";
 import { ExBasicColumnsEmpty } from "./examples/ex-basic-columns-empty";
 import { ExPaging } from "./examples/ex-paging";
 import { ExSorting } from "./examples/ex-sorting";
-import "./app.scss";
 import { ExActions } from "./examples/ex-actions";
+import { ExCellCustomization } from "./examples/ex-custom-cells";
+import "./app.scss";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <MenuItem text="Paging" href="#ex-paging" />
             <MenuItem text="Sorting" href="#ex-sorting" />
             <MenuItem text="Actions" href="#ex-actions" />
+            <MenuItem text="Cell Customization" href="#ex-cell-customization" />
           </Menu>
         </nav>
         <main id="content">
@@ -28,6 +30,7 @@ function App() {
           <ExPaging />
           <ExSorting />
           <ExActions />
+          <ExCellCustomization />
         </main>
       </div>
     </div>
