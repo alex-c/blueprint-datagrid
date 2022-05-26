@@ -2,9 +2,21 @@
   width: 100%;
   height: 100%;
   #container {
-    width: 1000px;
-    height: 100%;
+    width: 1200px;
+    height: calc(100% - 70px);
     margin: auto;
-    padding-top: 20px;
+    margin-top: 20px;
+    display: flex;
+    #menu {
+      width: 180px;
+      margin-right: 20px;
+    }
+    #content {
+      flex-grow: 1;
+    }
   }
+}
+
+.new-section {
+  margin-top: 10px;
 }

@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Jalapeno",
+    "species": "C. annuum",
+    "shuLowerBound": 4000,
+    "shuUpperBound": 8500,
+    "rare": false
+  },
+  {
+    "name": "Inca Peach Drop",
+    "species": "C. baccatum",
+    "shuLowerBound": 55000,
+    "shuUpperBound": 100000,
+    "rare": true
+  },
+  {
+    "name": "Habanero Red Savina",
+    "species": "C. chinense",
+    "shuLowerBound": 100000,
+    "shuUpperBound": 350000,
+    "rare": false
+  },
+  {
+    "name": "Yaki Blue",
+    "species": "C.chinense",
+    "shuLowerBound": 150000,
+    "shuUpperBound": 600000,
+    "rare": true
+  }
+]

@@ -1,10 +1,12 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import userSlice from "../data/users/user-slice";
+import { userReducer } from "../data/users/user-slice";
 import { appReducer } from "../app-slice";
+import { varietyReducer } from "../data/pepper-varieties/pepper-variety-slice";
 
 export const store = configureStore({
   reducer: {
-    users: userSlice,
+    users: userReducer,
+    varieties: varietyReducer,
     app: appReducer,
   },
 });

@@ -4,7 +4,7 @@ import ThemeSwitcher from "./components/theme-switcher";
 
 export const Header = () => {
   return (
-    <Navbar id="navigation">
+    <Navbar id="header">
       <div style={{ margin: "0 auto", width: "1000px" }}>
         <Navbar.Group align={Alignment.LEFT}>
           <Navbar.Heading>

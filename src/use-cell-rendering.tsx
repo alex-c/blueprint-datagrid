@@ -17,7 +17,7 @@ export const userCellRendering = <T extends DataSourceType>() => {
   };
 
   const renderBooleanCell: CellRenderFunction = (row, col) => {
-    return row[col.field] ? <Icon icon={IconNames.TickCircle} /> : <Icon icon={IconNames.BanCircle} />;
+    return row[col.field] ? <Icon icon={IconNames.Tick} /> : <Icon icon={IconNames.Cross} />;
   };
 
   const renderDefaultCell: CellRenderFunction = (row, col) => {
