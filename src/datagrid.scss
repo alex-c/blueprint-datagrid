@@ -1,0 +1,32 @@
+@import "~@blueprintjs/core/lib/scss/variables";
+@import "~@blueprintjs/core/src/components/html-table/_html-table.scss";
+
+.datagrid {
+  width: 100%;
+  .datagrid-cell {
+    &.datagrid-cell-boolean {
+      text-align: center;
+    }
+    &.datagrid-cell-number {
+      text-align: right;
+    }
+    &.datagrid-cell-actions {
+      padding: 0;
+    }
+  }
+  .datagrid-control:hover {
+    cursor: pointer;
+  }
+  border: 1px solid $table-border-color;
+}
+
+.bp4-dark {
+  .datagrid {
+    border: 1px solid $dark-table-border-color;
+  }
+}
+
+.datagrid-bottombar {
+  margin-top: 10px;
+  text-align: right;
+}
