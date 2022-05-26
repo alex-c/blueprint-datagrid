@@ -1,8 +1,6 @@
 import React from "react";
+import { Column, ColumnType, Datagrid } from "../../build";
 import "./app.css";
-import BlueprintDatagrid, {
-  BlueprintDatagridColumnDefinition,
-} from "../../lib/esm";
 
 interface RowData {
   id: number;
@@ -14,40 +12,21 @@ interface RowData {
 const dataSource: RowData[] = [
   {
     id: 1,
-    name: "Alexandre Charoy",
+    name: "Alexandre",
     age: 31,
     gender: "male",
   },
   {
     id: 2,
-    name: "Natalie Neuber",
+    name: "Natalie",
     age: 31,
     gender: "female",
   },
   {
     id: 3,
-    name: "Gandalf the Gray",
+    name: "Gandalf",
     age: 567,
     gender: "male",
-  },
-];
-
-const columnDefinitions: BlueprintDatagridColumnDefinition[] = [
-  {
-    dataField: "id",
-    label: "ID",
-  },
-  {
-    dataField: "name",
-    label: "Name",
-  },
-  {
-    dataField: "age",
-    label: "Age",
-  },
-  {
-    dataField: "gender",
-    label: "Gender",
   },
 ];
 
@@ -55,13 +34,12 @@ function App() {
   return (
     <div id="app">
       <div id="container">
-        <BlueprintDatagrid
-          dataSource={dataSource}
-          columnDefinitions={columnDefinitions}
-          striped
-          bordered
-          interactive
-        />
+        <Datagrid dataSource={dataSource}>
+          <Column field="id" label="ID" />
+          <Column field="name" label="Name" sortable />
+          <Column field="age" label="Age" type={ColumnType.NUMBER} sortable />
+          <Column field="gender" label="Gender" />
+        </Datagrid>
       </div>
     </div>
   );
