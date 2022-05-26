@@ -7,7 +7,7 @@ import { DataSourceType } from "./datagrid";
 
 type CellRenderFunction = <T extends DataSourceType>(row: T, col: ColumnProps<T>) => ReactNode;
 
-export const userCellRendering = <T extends DataSourceType>() => {
+export const useCellRendering = <T extends DataSourceType>() => {
   const getCellClassName = (col: ColumnProps<T>) => {
     const baseClassName = "datagrid-cell";
     if (col.type) {

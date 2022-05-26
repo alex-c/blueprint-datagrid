@@ -3,7 +3,7 @@ import { Button, ButtonGroup, HTMLTable, Icon, NonIdealState } from "@blueprintj
 import { IconNames } from "@blueprintjs/icons";
 import { useDatagridSorting } from "./use-datagrid-sorting";
 import { usePagination } from "./use-pagination";
-import { userCellRendering } from "./use-cell-rendering";
+import { useCellRendering } from "./use-cell-rendering";
 import { Column, ColumnProps } from "./components/column";
 import { Pager, PagerProps } from "./components/pager";
 import { Action, ActionProps } from "./components/action";
@@ -45,7 +45,7 @@ export const Datagrid = <T extends DataSourceType>(props: DatagridProps<T>) => {
   const { paginateData, renderPaginationControls } = usePagination<T>(data.length, pagination?.elementsPerPage);
   data = paginateData(data);
 
-  const { getCellClassName, renderCell } = userCellRendering<T>();
+  const { getCellClassName, renderCell } = useCellRendering<T>();
 
   return (
     <div className="datagrid-wrapper">
