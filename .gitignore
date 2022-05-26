@@ -1,6 +1,7 @@
 /demo/node_modules
 /demo/build
-/lib
+/build
+bundle-analysis.html
 
 # Logs
 logs
