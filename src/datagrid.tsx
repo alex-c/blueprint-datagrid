@@ -8,6 +8,7 @@ import { Column, ColumnProps } from "./components/column";
 import { Pager, PagerProps } from "./components/pager";
 import { Action, ActionProps } from "./components/action";
 import "./datagrid.scss";
+import { useFiltering } from "./use-filtering";
 
 export type DataSourceType = {
   [key: string]: any;
@@ -39,13 +40,17 @@ const parseChildren = <T,>(children: JSX.Element | JSX.Element[]): DatagridDeriv
 
 export const Datagrid = <T extends DataSourceType>(props: DatagridProps<T>) => {
   const { columns, actions, pagination } = parseChildren<T>(props.children);
+
+  const { paginateData, renderPaginationControls } = usePagination<T>(
+    props.dataSource.length,
+    pagination?.elementsPerPage
+  );
   const { sortData, renderSortingControl } = useDatagridSorting<T>(columns);
-  let data = sortData(props.dataSource);
-
-  const { paginateData, renderPaginationControls } = usePagination<T>(data.length, pagination?.elementsPerPage);
-  data = paginateData(data);
-
   const { getCellClassName, renderCell } = useCellRendering<T>();
+  const { renderFilterControls } = useFiltering<T>();
+
+  let data = sortData(props.dataSource);
+  data = paginateData(data);
 
   return (
     <div className="datagrid-wrapper">
@@ -60,6 +65,7 @@ export const Datagrid = <T extends DataSourceType>(props: DatagridProps<T>) => {
             ))}
             {actions.length > 0 && <th key="datagrid-actions">Actions</th>}
           </tr>
+          {columns.filter(c => c.filter).length > 0 && <tr>{columns.map(renderFilterControls)}</tr>}
         </thead>
         <tbody>
           {data.length > 0 ? (

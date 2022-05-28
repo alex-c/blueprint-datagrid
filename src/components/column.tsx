@@ -12,6 +12,7 @@ export interface ColumnProps<T> {
   sortable?: boolean;
   formatter?: (value: any) => any;
   renderer?: (row: T) => JSX.Element;
+  filter?: boolean;
 }
 
 export const Column = <T,>(_: ColumnProps<T>) => <></>;

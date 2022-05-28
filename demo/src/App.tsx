@@ -7,6 +7,7 @@ import { ExPaging } from "./examples/ex-paging";
 import { ExSorting } from "./examples/ex-sorting";
 import { ExActions } from "./examples/ex-actions";
 import { ExCellCustomization } from "./examples/ex-custom-cells";
+import { ExFiltering } from "./examples/ex-filtering";
 import "./app.scss";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <MenuItem text="Sorting" href="#ex-sorting" />
             <MenuItem text="Actions" href="#ex-actions" />
             <MenuItem text="Cell Customization" href="#ex-cell-customization" />
+            <MenuItem text="Filtering" href="#ex-filtering" />
           </Menu>
         </nav>
         <main id="content">
@@ -31,6 +33,7 @@ function App() {
           <ExSorting />
           <ExActions />
           <ExCellCustomization />
+          <ExFiltering />
         </main>
       </div>
     </div>
