@@ -17,12 +17,24 @@
   .datagrid-control:hover {
     cursor: pointer;
   }
-  border: 1px solid $table-border-color;
+  box-shadow: $table-border-width $table-border-width 0 0 $table-border-color;
+  thead tr {
+    box-shadow: inset $table-border-width $table-border-width 0 0 $table-border-color;
+  }
+  tr {
+    box-shadow: inset $table-border-width 0 0 0 $table-border-color;
+  }
 }
 
 .bp4-dark {
   .datagrid {
-    border: 1px solid $dark-table-border-color;
+    box-shadow: $table-border-width $table-border-width 0 0 $dark-table-border-color;
+    thead tr {
+      box-shadow: inset $table-border-width $table-border-width 0 0 $dark-table-border-color;
+    }
+    tr {
+      box-shadow: inset $table-border-width 0 0 0 $dark-table-border-color;
+    }
   }
 }
 
