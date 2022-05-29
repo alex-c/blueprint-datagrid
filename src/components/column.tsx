@@ -1,6 +1,7 @@
 import React from "react";
 
 export enum ColumnType {
+  TEXT = "text",
   BOOLEAN = "boolean",
   NUMBER = "number",
 }

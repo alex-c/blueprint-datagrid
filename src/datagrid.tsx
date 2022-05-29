@@ -7,8 +7,8 @@ import { useCellRendering } from "./use-cell-rendering";
 import { Column, ColumnProps } from "./components/column";
 import { Pager, PagerProps } from "./components/pager";
 import { Action, ActionProps } from "./components/action";
-import "./datagrid.scss";
 import { useFiltering } from "./use-filtering";
+import "./datagrid.scss";
 
 export type DataSourceType = {
   [key: string]: any;
@@ -46,10 +46,11 @@ export const Datagrid = <T extends DataSourceType>(props: DatagridProps<T>) => {
     pagination?.elementsPerPage
   );
   const { sortData, renderSortingControl } = useDatagridSorting<T>(columns);
+  const { filterData, renderFilterControls } = useFiltering<T>(columns);
   const { getCellClassName, renderCell } = useCellRendering<T>();
-  const { renderFilterControls } = useFiltering<T>();
 
-  let data = sortData(props.dataSource);
+  let data = filterData(props.dataSource);
+  data = sortData(data);
   data = paginateData(data);
 
   return (

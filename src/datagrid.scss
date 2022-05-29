@@ -3,6 +3,25 @@
 
 .datagrid {
   width: 100%;
+
+  // Borders
+  box-shadow: $table-border-width $table-border-width 0 0 $table-border-color;
+  thead tr {
+    box-shadow: inset $table-border-width $table-border-width 0 0 $table-border-color;
+  }
+  tr {
+    box-shadow: inset $table-border-width 0 0 0 $table-border-color;
+  }
+
+  // Filter cells
+  .filter-cell {
+    padding: 0px !important;
+    .bp4-input {
+      box-shadow: none;
+    }
+  }
+
+  // Cell rendering
   .datagrid-cell {
     &.datagrid-cell-boolean {
       text-align: center;
@@ -14,20 +33,16 @@
       padding: 0;
     }
   }
+
+  // Controls
   .datagrid-control:hover {
     cursor: pointer;
-  }
-  box-shadow: $table-border-width $table-border-width 0 0 $table-border-color;
-  thead tr {
-    box-shadow: inset $table-border-width $table-border-width 0 0 $table-border-color;
-  }
-  tr {
-    box-shadow: inset $table-border-width 0 0 0 $table-border-color;
   }
 }
 
 .bp4-dark {
   .datagrid {
+    // Borders
     box-shadow: $table-border-width $table-border-width 0 0 $dark-table-border-color;
     thead tr {
       box-shadow: inset $table-border-width $table-border-width 0 0 $dark-table-border-color;
