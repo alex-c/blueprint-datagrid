@@ -13,12 +13,11 @@ export const ExFiltering = () => {
         table header. For filtering to works, the column needs a <Code>ColumnType</Code> to be set.
       </p>
       <p>
-        For <Code>ColumnType.TEXT</Code> fields, a text input is rendered with two possible fitlering modes:{" "}
-        <Code>contains</Code> and <Code>equals</Code>.
+        For <Code>ColumnType.TEXT</Code> fields, a text input is rendered with several possible filtering modes.
       </p>
       <Datagrid dataSource={varieties}>
         <Column field="name" label="Name" type={ColumnType.TEXT} filter />
-        <Column field="species" label="Species" />
+        <Column field="species" label="Species" type={ColumnType.TEXT} filter />
         <Column field="shuLowerBound" label="Heat Lower Bound (SHU)" type={ColumnType.NUMBER} />
         <Column field="shuUpperBound" label="Heat Upper Bound (SHU)" type={ColumnType.NUMBER} />
         <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} />

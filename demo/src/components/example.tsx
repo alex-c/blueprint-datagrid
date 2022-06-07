@@ -9,7 +9,7 @@ interface ExampleProps {
 
 export const Example = (props: ExampleProps) => {
   return (
-    <div id={props.id} style={{ marginBottom: "20px" }}>
+    <div id={props.id} style={{ paddingBottom: "10px", marginBottom: "20px" }}>
       {props.title && <H2>{props.title}</H2>}
       {props.description && <p>{props.description}</p>}
       {props.children}
