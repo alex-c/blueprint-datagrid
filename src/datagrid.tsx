@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, ButtonGroup, HTMLTable, Icon, NonIdealState } from "@blueprintjs/core";
-import { IconNames } from "@blueprintjs/icons";
+import { IconName, IconNames } from "@blueprintjs/icons";
 import { useDatagridSorting } from "./use-datagrid-sorting";
 import { usePagination } from "./use-pagination";
 import { useCellRendering } from "./use-cell-rendering";
@@ -17,7 +17,8 @@ export type DataSourceType = {
 export interface DatagridProps<T> {
   dataSource: T[];
   children: JSX.Element | JSX.Element[];
-  notDataText?: string;
+  noDataText?: string;
+  noDataIcon?: IconName;
 }
 
 export interface DatagridDerivedProps<T> {
@@ -114,8 +115,11 @@ export const Datagrid = <T extends DataSourceType>(props: DatagridProps<T>) => {
             </>
           ) : (
             <tr>
-              <td colSpan={columns.length + actions.length} style={{ paddingBottom: "16px" }}>
-                <NonIdealState icon={IconNames.ZoomOut} description={props.notDataText || "No data."} />
+              <td colSpan={columns.length + (actions.length > 0 ? 1 : 0)} style={{ paddingBottom: "16px" }}>
+                <NonIdealState
+                  icon={props.noDataIcon || IconNames.ZoomOut}
+                  description={props.noDataText || "No data."}
+                />
               </td>
             </tr>
           )}

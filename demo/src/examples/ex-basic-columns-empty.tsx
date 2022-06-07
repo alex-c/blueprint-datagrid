@@ -1,4 +1,5 @@
 import { Code } from "@blueprintjs/core";
+import { IconNames } from "@blueprintjs/icons";
 import { Column, ColumnType, Datagrid } from "../../../build";
 import { Example } from "../components/example";
 import { Variety } from "../data/pepper-varieties/pepper-varieties";
@@ -15,9 +16,13 @@ export const ExBasicColumnsEmpty = () => {
         <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} />
       </Datagrid>
       <p className="new-section">
-        The text can be customized with <Code>notDataText</Code>.
+        The text and icon can be customized with <Code>noDataText</Code> and <Code>noDataIcon</Code>.
       </p>
-      <Datagrid dataSource={[] as Variety[]} notDataText="These are not the droids you are looking for.">
+      <Datagrid
+        dataSource={[] as Variety[]}
+        noDataText="These are not the droids you are looking for."
+        noDataIcon={IconNames.Cross}
+      >
         <Column field="name" label="Name" />
         <Column field="species" label="Species" />
         <Column field="shuLowerBound" label="Heat Lower Bound (SHU)" type={ColumnType.NUMBER} />

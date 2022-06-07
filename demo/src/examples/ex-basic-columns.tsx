@@ -37,7 +37,7 @@ export const ExBasicColumns = () => {
     <Example
       id="ex-basic-columns"
       title="Basic Columns"
-      description="Supported basic columns arte text, number and boolean columns."
+      description="Supported basic column types are text, number and boolean columns. If no specific type is set, the column will be handled like a text column."
     >
       <Datagrid dataSource={varieties}>
         <Column field="name" label="Name" />
