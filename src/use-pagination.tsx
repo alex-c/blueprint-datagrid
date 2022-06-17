@@ -40,12 +40,16 @@ export const usePagination = <T extends DataSourceType>(
               max={numberOfPages}
               value={activePage}
               onValueChange={directInputPage}
-              style={{ width: numberOfPages.toString().length * 8 + 20 + "px" }}
+              style={{ width: numberOfPages.toString().length * 18 + 32 + "px", textAlign: "right" }}
               buttonPosition="none"
               selectAllOnFocus
               selectAllOnIncrement
+              rightElement={
+                <Button minimal disabled style={{ paddingLeft: "2px" }}>
+                  / {numberOfPages}
+                </Button>
+              }
             />
-            <Button disabled>of {numberOfPages}</Button>
           </>
         ) : (
           <>
