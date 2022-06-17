@@ -9,7 +9,7 @@ const config = {
   title: "Blueprint Datagrid",
   tagline: "An enhanced table component for Blueprint 4.",
   url: "https://alex-c.github.io",
-  baseUrl: "/",
+  baseUrl: "/blueprint-datagrid/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
@@ -18,6 +18,7 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "alex-c", // Usually your GitHub org/user name.
   projectName: "blueprint-datagrid", // Usually your repo name.
+  trailingSlash: false,
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -72,11 +73,28 @@ const config = {
         style: "dark",
         links: [
           {
+            title: "Blueprint",
+            items: [
+              {
+                label: "Blueprint",
+                href: "https://github.com/palantir/blueprint",
+              },
+              {
+                label: "Blueprint Datagrid",
+                href: "https://github.com/alex-c/blueprint-datagrid",
+              },
+            ],
+          },
+          {
             title: "Docs",
             items: [
               {
-                label: "Tutorial",
-                to: "/docs/intro",
+                label: "Introduction",
+                to: "/docs/introduction",
+              },
+              {
+                label: "Getting Started",
+                to: "/docs/getting-started",
               },
             ],
           },
@@ -85,28 +103,11 @@ const config = {
             items: [
               {
                 label: "Stack Overflow",
-                href: "https://stackoverflow.com/questions/tagged/docusaurus",
+                href: "https://stackoverflow.com/questions/tagged/blueprint-datagrid",
               },
               {
-                label: "Discord",
-                href: "https://discordapp.com/invite/docusaurus",
-              },
-              {
-                label: "Twitter",
-                href: "https://twitter.com/docusaurus",
-              },
-            ],
-          },
-          {
-            title: "More",
-            items: [
-              {
-                label: "Blog",
-                to: "/blog",
-              },
-              {
-                label: "GitHub",
-                href: "https://github.com/facebook/docusaurus",
+                label: "Github Issues",
+                href: "https://github.com/alex-c/blueprint-datagrid/issues",
               },
             ],
           },
