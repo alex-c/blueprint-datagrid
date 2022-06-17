@@ -4,7 +4,7 @@ Blueprint Datagrid is an enhanced table component for [Blueprint 4](https://blue
 
 Quick links:
 
-- Documentation 🚧 TODO 🚧
+- [Documentation](https://alex-c.github.io/blueprint-datagrid/)
 - Example Playground 🚧 TODO 🚧
 
 ### Status
