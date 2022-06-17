@@ -44,7 +44,8 @@ export const Datagrid = <T extends DataSourceType>(props: DatagridProps<T>) => {
 
   const { paginateData, renderPaginationControls } = usePagination<T>(
     props.dataSource.length,
-    pagination?.elementsPerPage
+    pagination?.elementsPerPage,
+    pagination?.directInput || false
   );
   const { sortData, renderSortingControl } = useDatagridSorting<T>(columns);
   const { filterData, renderFilterControls } = useFiltering<T>(columns);

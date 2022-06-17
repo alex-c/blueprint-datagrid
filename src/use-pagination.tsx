@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ButtonGroup, Intent } from "@blueprintjs/core";
+import { Button, ButtonGroup, Intent, NumericInput } from "@blueprintjs/core";
 import { IconNames } from "@blueprintjs/icons";
 import { useState } from "react";
 import { DataSourceType } from "./datagrid";
@@ -12,10 +12,17 @@ const calculateNumberOfPages = (numberOfElements: number, elementsPerPage: numbe
 
 export const usePagination = <T extends DataSourceType>(
   numberOfElements: number,
-  elementsPerPage: number | undefined
+  elementsPerPage: number | undefined,
+  directInput: boolean
 ) => {
   const [activePage, setActivePage] = useState<number>(1);
   const numberOfPages = elementsPerPage !== undefined ? calculateNumberOfPages(numberOfElements, elementsPerPage) : 1;
+
+  const directInputPage = (page: number) => {
+    if (page >= 1 && page <= numberOfPages) {
+      setActivePage(page);
+    }
+  };
 
   const renderPaginationControls = () => {
     return (
@@ -26,29 +33,47 @@ export const usePagination = <T extends DataSourceType>(
           disabled={activePage === 1}
           onClick={() => setActivePage(activePage - 1)}
         />
-        {activePage > 3 ? (
+        {directInput ? (
           <>
-            <Button text={".."} disabled />
-            <Button text={activePage - 2} onClick={() => setActivePage(activePage - 2)} />
-            <Button text={activePage - 1} onClick={() => setActivePage(activePage - 1)} />
+            <NumericInput
+              min={1}
+              max={numberOfPages}
+              value={activePage}
+              onValueChange={directInputPage}
+              style={{ width: numberOfPages.toString().length * 8 + 20 + "px" }}
+              buttonPosition="none"
+              selectAllOnFocus
+              selectAllOnIncrement
+            />
+            <Button disabled>of {numberOfPages}</Button>
           </>
         ) : (
-          [...Array(activePage - 1)].map((_, i) => (
-            <Button key={"button-" + i} text={i + 1} onClick={() => setActivePage(i + 1)} />
-          ))
-        )}
-        <Button key={"button-" + activePage} text={activePage} intent={Intent.PRIMARY} />
-        {numberOfPages - activePage >= 3 ? (
           <>
-            <Button text={activePage + 1} onClick={() => setActivePage(activePage + 1)} />
-            <Button text={activePage + 2} onClick={() => setActivePage(activePage + 2)} />
-            <Button text={".."} disabled />
+            {activePage > 3 ? (
+              <>
+                <Button text={".."} disabled />
+                <Button text={activePage - 2} onClick={() => setActivePage(activePage - 2)} />
+                <Button text={activePage - 1} onClick={() => setActivePage(activePage - 1)} />
+              </>
+            ) : (
+              [...Array(activePage - 1)].map((_, i) => (
+                <Button key={"button-" + i} text={i + 1} onClick={() => setActivePage(i + 1)} />
+              ))
+            )}
+            <Button key={"button-" + activePage} text={activePage} intent={Intent.PRIMARY} />
+            {numberOfPages - activePage >= 3 ? (
+              <>
+                <Button text={activePage + 1} onClick={() => setActivePage(activePage + 1)} />
+                <Button text={activePage + 2} onClick={() => setActivePage(activePage + 2)} />
+                <Button text={".."} disabled />
+              </>
+            ) : (
+              [...Array(numberOfPages - activePage)].map((_, i) => {
+                const index = i + activePage + 1;
+                return <Button key={"button-" + index} text={index} onClick={() => setActivePage(index)} />;
+              })
+            )}
           </>
-        ) : (
-          [...Array(numberOfPages - activePage)].map((_, i) => {
-            const index = i + activePage + 1;
-            return <Button key={"button-" + index} text={index} onClick={() => setActivePage(index)} />;
-          })
         )}
         <Button
           icon={IconNames.ChevronRight}

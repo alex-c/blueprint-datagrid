@@ -58,6 +58,27 @@ export const ExPaging = () => {
         <Column field="enabled" label="Enabled" type={ColumnType.BOOLEAN} />
         <Pager elementsPerPage={10} />
       </Datagrid>
+      <p className="new-section">
+        An alternative pager mode can be activated with <Code>Pager.directInput</Code>. It allows to directly input the
+        target page number. It doesn't have good usability when there are few pages, but can be useful when there are
+        many pages, as it allows to quicky jump to any page instead of clicking many times.
+      </p>
+      <p>With few pages:</p>
+      <Datagrid dataSource={users}>
+        <Column field="id" label="ID" />
+        <Column field="name" label="Name" />
+        <Column field="age" label="Age" type={ColumnType.NUMBER} />
+        <Column field="enabled" label="Enabled" type={ColumnType.BOOLEAN} />
+        <Pager elementsPerPage={10} directInput />
+      </Datagrid>
+      <p className="new-section">With many pages:</p>
+      <Datagrid dataSource={manyUsers}>
+        <Column field="id" label="ID" />
+        <Column field="name" label="Name" />
+        <Column field="age" label="Age" type={ColumnType.NUMBER} />
+        <Column field="enabled" label="Enabled" type={ColumnType.BOOLEAN} />
+        <Pager elementsPerPage={10} directInput />
+      </Datagrid>
     </Example>
   );
 };
