@@ -1,0 +1,25 @@
+@use "sass:color";
+@import "~@blueprintjs/core/lib/scss/variables";
+
+:root {
+  --ifm-color-primary: #{$blue3};
+  --ifm-color-primary-dark: #{$blue2};
+  --ifm-color-primary-darker: #{$blue1};
+  --ifm-color-primary-darkest: #{color.scale($blue1, $lightness: -10%)};
+  --ifm-color-primary-light: #{$blue4};
+  --ifm-color-primary-lighter: #{$blue5};
+  --ifm-color-primary-lightest: #{color.scale($blue5, $lightness: 10%)};
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --ifm-color-primary: #{color.scale($blue3, $lightness: 10%)};
+  --ifm-color-primary-dark: #{color.scale($blue2, $lightness: 10%)};
+  --ifm-color-primary-darker: #{color.scale($blue1, $lightness: 10%)};
+  --ifm-color-primary-darkest: $blue1;
+  --ifm-color-primary-light: #{color.scale($blue4, $lightness: 10%)};
+  --ifm-color-primary-lighter: #{color.scale($blue5, $lightness: 10%)};
+  --ifm-color-primary-lightest: #{color.scale($blue5, $lightness: 20%)};
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
