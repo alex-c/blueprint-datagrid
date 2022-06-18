@@ -1,13 +1,15 @@
 import React from "react";
-import { ExBasicColumns } from "./examples/ex-basic-columns";
 import { Header } from "./header";
-import { Classes, Menu, MenuItem } from "@blueprintjs/core";
-import { ExBasicColumnsEmpty } from "./examples/ex-basic-columns-empty";
-import { ExPaging } from "./examples/ex-paging";
-import { ExSorting } from "./examples/ex-sorting";
-import { ExActions } from "./examples/ex-actions";
-import { ExCellCustomization } from "./examples/ex-custom-cells";
-import { ExFiltering } from "./examples/ex-filtering";
+import { Classes, Menu } from "@blueprintjs/core";
+import { NoDataPage } from "./pages/page-no-data";
+import { PaginationPage } from "./pages/page-pagination";
+import { SortingPage } from "./pages/page-sorting";
+import { ActionsPage } from "./pages/page-actions";
+import { CellCustomizationPage } from "./pages/page-cell-customization";
+import { FilteringPage } from "./pages/page-filtering";
+import { Route, Routes } from "react-router";
+import { BasicsPage } from "./pages/page-basics";
+import { MenuLink } from "./components/menu-link";
 import "./app.scss";
 
 function App() {
@@ -17,23 +19,25 @@ function App() {
       <div id="container">
         <nav id="menu">
           <Menu className={Classes.ELEVATION_1}>
-            <MenuItem text="Basic Columns" href="#ex-basic-columns" />
-            <MenuItem text="No Data" href="#ex-no-data" />
-            <MenuItem text="Paging" href="#ex-paging" />
-            <MenuItem text="Sorting" href="#ex-sorting" />
-            <MenuItem text="Actions" href="#ex-actions" />
-            <MenuItem text="Cell Customization" href="#ex-cell-customization" />
-            <MenuItem text="Filtering" href="#ex-filtering" />
+            <MenuLink path="/" title="Basics" />
+            <MenuLink path="no-data" title="No Data" />
+            <MenuLink path="pagination" title="Pagination" />
+            <MenuLink path="sorting" title="Sorting" />
+            <MenuLink path="filtering" title="Filtering" />
+            <MenuLink path="actions" title="Actions" />
+            <MenuLink path="cell-customization" title="Cell Customization" />
           </Menu>
         </nav>
         <main id="content">
-          <ExBasicColumns />
-          <ExBasicColumnsEmpty />
-          <ExPaging />
-          <ExSorting />
-          <ExActions />
-          <ExCellCustomization />
-          <ExFiltering />
+          <Routes>
+            <Route index element={<BasicsPage />} />
+            <Route path="no-data" element={<NoDataPage />} />
+            <Route path="pagination" element={<PaginationPage />} />
+            <Route path="sorting" element={<SortingPage />} />
+            <Route path="filtering" element={<FilteringPage />} />
+            <Route path="actions" element={<ActionsPage />} />
+            <Route path="cell-customization" element={<CellCustomizationPage />} />
+          </Routes>
         </main>
       </div>
     </div>

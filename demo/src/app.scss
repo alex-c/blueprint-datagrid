@@ -11,6 +11,10 @@
       margin-left: calc((100vw - 1200px) / 2);
       position: sticky;
       top: 20px;
+      .menu-link {
+        color: inherit;
+        text-decoration: inherit;
+      }
     }
     #content {
       width: 1000px;
@@ -20,6 +24,15 @@
   }
 }
 
-.new-section {
-  margin-top: 10px;
+.page {
+  .section {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    &:not(:first-child) {
+      margin-top: 10px;
+    }
+    p:not(:first-child) {
+      margin-top: 10px;
+    }
+  }
 }
