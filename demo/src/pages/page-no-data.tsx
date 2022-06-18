@@ -1,6 +1,6 @@
 import { Code } from "@blueprintjs/core";
 import { IconNames } from "@blueprintjs/icons";
-import { Column, ColumnType, Datagrid } from "../../../build";
+import { Column, ColumnType, Datagrid, Placeholder } from "../../../build";
 import { Page } from "../components/page";
 import { Section } from "../components/section";
 import { Variety } from "../data/pepper-varieties/pepper-varieties";
@@ -18,9 +18,10 @@ export const NoDataPage = () => {
           <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} />
         </Datagrid>
         <p className="new-section">
-          The text and icon can be customized with <Code>noDataText</Code> and <Code>noDataIcon</Code>.
+          The text and/or icon can be customized by providing a <Code>Placeholder</Code> component.
         </p>
-        <Datagrid dataSource={[] as Variety[]} noDataText="These are not the droids you are looking for." noDataIcon={IconNames.Cross}>
+        <Datagrid dataSource={[] as Variety[]}>
+          <Placeholder text="These are not the droids you are looking for." icon={IconNames.Cross} />
           <Column field="name" label="Name" />
           <Column field="species" label="Species" />
           <Column field="shuLowerBound" label="Heat Lower Bound (SHU)" type={ColumnType.NUMBER} />

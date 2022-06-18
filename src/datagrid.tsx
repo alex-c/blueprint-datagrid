@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, ButtonGroup, HTMLTable, Icon, NonIdealState } from "@blueprintjs/core";
-import { IconName, IconNames } from "@blueprintjs/icons";
+import { IconNames } from "@blueprintjs/icons";
 import { useDatagridSorting } from "./use-datagrid-sorting";
 import { usePagination } from "./use-pagination";
 import { useCellRendering } from "./use-cell-rendering";
@@ -8,6 +8,7 @@ import { Column, ColumnProps } from "./components/column";
 import { Pager, PagerProps } from "./components/pager";
 import { Action, ActionProps } from "./components/action";
 import { useFiltering } from "./use-filtering";
+import { DefaultPlaceholder, Placeholder, PlaceholderProps } from "./components/placeholder";
 import "./datagrid.scss";
 
 export type DataSourceType = {
@@ -17,14 +18,13 @@ export type DataSourceType = {
 export interface DatagridProps<T> {
   dataSource: T[];
   children: JSX.Element | JSX.Element[];
-  noDataText?: string;
-  noDataIcon?: IconName;
 }
 
 export interface DatagridDerivedProps<T> {
   columns: ColumnProps<T>[];
   actions: ActionProps<T>[];
   pagination?: PagerProps;
+  placeholder: PlaceholderProps;
 }
 
 const parseChildren = <T,>(children: JSX.Element | JSX.Element[]): DatagridDerivedProps<T> => {
@@ -36,11 +36,17 @@ const parseChildren = <T,>(children: JSX.Element | JSX.Element[]): DatagridDeriv
     .map(child => child.props as PagerProps)
     .at(0);
 
-  return { columns, actions, pagination };
+  const placeholder =
+    elements
+      .filter(child => child.type === Placeholder)
+      .map(child => child.props as PlaceholderProps)
+      .at(0) ?? DefaultPlaceholder;
+
+  return { columns, actions, pagination, placeholder };
 };
 
 export const Datagrid = <T extends DataSourceType>(props: DatagridProps<T>) => {
-  const { columns, actions, pagination } = parseChildren<T>(props.children);
+  const { columns, actions, pagination, placeholder } = parseChildren<T>(props.children);
 
   const { paginateData, renderPaginationControls } = usePagination<T>(
     props.dataSource.length,
@@ -118,8 +124,8 @@ export const Datagrid = <T extends DataSourceType>(props: DatagridProps<T>) => {
             <tr>
               <td colSpan={columns.length + (actions.length > 0 ? 1 : 0)} style={{ paddingBottom: "16px" }}>
                 <NonIdealState
-                  icon={props.noDataIcon || IconNames.ZoomOut}
-                  description={props.noDataText || "No data."}
+                  icon={placeholder.icon ?? DefaultPlaceholder.icon}
+                  description={placeholder.text ?? DefaultPlaceholder.text}
                 />
               </td>
             </tr>
