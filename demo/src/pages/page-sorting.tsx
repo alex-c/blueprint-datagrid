@@ -1,3 +1,4 @@
+import { Code } from "@blueprintjs/core";
 import { Column, ColumnType, Datagrid, Pager } from "../../../build";
 import { useAppSelector } from "../app/hooks";
 import { Page } from "../components/page";
@@ -8,7 +9,9 @@ export const SortingPage = () => {
 
   return (
     <Page title="Sorting">
-      <p>Basic sorting works on text, number and boolean columns. Right now, only one column can be sorted at the time.</p>
+      <p>
+        Basic sorting can be activated by setting <Code>Column.Sortable</Code>, and works on text, number and boolean columns. Right now, only one column can be sorted at the time.
+      </p>
       <Section>
         <Datagrid dataSource={users}>
           <Column field="id" label="ID" />

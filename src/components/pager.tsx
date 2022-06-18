@@ -5,6 +5,4 @@ export interface PagerProps {
   directInput?: boolean;
 }
 
-export const Pager = (_: PagerProps) => {
-  return <></>;
-};
+export const Pager = (_: PagerProps) => <></>;

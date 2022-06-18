@@ -23,7 +23,7 @@ const getInitialSortingState = (columns: ColumnProps<any>[]): DatagridSortingSta
   return initialState;
 };
 
-export const useDatagridSorting = <T extends DataSourceType>(columns: ColumnProps<T>[]) => {
+export const useSorting = <T extends DataSourceType>(columns: ColumnProps<T>[]) => {
   const [sortingState, setSortingState] = useState<DatagridSortingState>(getInitialSortingState(columns));
 
   const renderSortingControl = (column: ColumnProps<T>) => {

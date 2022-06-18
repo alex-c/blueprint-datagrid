@@ -1,9 +1,9 @@
 import React from "react";
 import { Button, ButtonGroup, HTMLTable, Icon, NonIdealState } from "@blueprintjs/core";
 import { IconNames } from "@blueprintjs/icons";
-import { useDatagridSorting } from "./use-datagrid-sorting";
+import { useSorting } from "./use-sorting";
 import { usePagination } from "./use-pagination";
-import { useCellRendering } from "./use-cell-rendering";
+import { useRendering } from "./use-rendering";
 import { Column, ColumnProps } from "./components/column";
 import { Pager, PagerProps } from "./components/pager";
 import { Action, ActionProps } from "./components/action";
@@ -53,9 +53,9 @@ export const Datagrid = <T extends DataSourceType>(props: DatagridProps<T>) => {
     pagination?.elementsPerPage,
     pagination?.directInput || false
   );
-  const { sortData, renderSortingControl } = useDatagridSorting<T>(columns);
+  const { sortData, renderSortingControl } = useSorting<T>(columns);
   const { filterData, renderFilterControls } = useFiltering<T>(columns);
-  const { getCellClassName, renderCell } = useCellRendering<T>();
+  const { getCellClassName, renderCell } = useRendering<T>();
 
   let data = filterData(props.dataSource);
   data = sortData(data);
