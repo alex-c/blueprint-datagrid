@@ -2,6 +2,7 @@
 @import "~@blueprintjs/core/lib/css/blueprint.css";
 @import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
 @import "~@blueprintjs/popover2/lib/css/blueprint-popover2.css";
+@import "~@blueprintjs/select/lib/css/blueprint-select.css";
 @import "~@blueprintjs/core/lib/scss/variables";
 @import "~@blueprintjs/core/src/components/html-table/_html-table.scss";
 
@@ -22,6 +23,11 @@
     padding: 1px !important;
     .bp4-input {
       box-shadow: none;
+    }
+    .bp4-button {
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      width: 100% !important;
     }
   }
 

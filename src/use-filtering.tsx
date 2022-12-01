@@ -4,6 +4,9 @@ import { IconName, IconNames } from "@blueprintjs/icons";
 import { ColumnProps, ColumnType } from "./components/column";
 import { DataSourceType } from "./datagrid";
 import { Popover2 } from "@blueprintjs/popover2";
+import { Select2 } from "@blueprintjs/select";
+
+const BooleanSelect = Select2.ofType<OptionalBoolean>();
 
 interface ColumnFilteringState {
   type: ColumnType;
@@ -25,6 +28,23 @@ enum NumberColumnFilteringMode {
   LESS_EQUALS,
 }
 
+enum OptionalBoolean {
+  FALSE,
+  TRUE,
+  NONE,
+}
+
+const getValueBasedOnOptionalBoolean = <V,>(bool: OptionalBoolean, defaultValue: V, trueValue: V, falseValue: V): V => {
+  switch (bool) {
+    case OptionalBoolean.NONE:
+      return defaultValue;
+    case OptionalBoolean.TRUE:
+      return trueValue;
+    case OptionalBoolean.FALSE:
+      return falseValue;
+  }
+};
+
 interface TextColumnFilteringState extends ColumnFilteringState {
   value: string;
   mode: TextColumnFilteringMode;
@@ -35,8 +55,12 @@ interface NumberColumnFilteringState extends ColumnFilteringState {
   mode: NumberColumnFilteringMode;
 }
 
+interface BooleanColumnFilteringState extends ColumnFilteringState {
+  value: OptionalBoolean;
+}
+
 interface DatagridFilteringState {
-  [key: string]: TextColumnFilteringState | NumberColumnFilteringState;
+  [key: string]: TextColumnFilteringState | NumberColumnFilteringState | BooleanColumnFilteringState;
 }
 
 const getInitialTextColumnFilteringState = (): TextColumnFilteringState => ({
@@ -51,6 +75,11 @@ const getInitialNumberColumnFilteringState = (): NumberColumnFilteringState => (
   mode: NumberColumnFilteringMode.EQUALS,
 });
 
+const getInitialBooleanColumnFilteringState = (): BooleanColumnFilteringState => ({
+  type: ColumnType.BOOLEAN,
+  value: OptionalBoolean.NONE,
+});
+
 const getInitialFilteringState = (columns: ColumnProps<any>[]): DatagridFilteringState => {
   const initialState: DatagridFilteringState = {};
   for (const column of columns) {
@@ -62,6 +91,8 @@ const getInitialFilteringState = (columns: ColumnProps<any>[]): DatagridFilterin
         case ColumnType.NUMBER:
           initialState[column.field] = getInitialNumberColumnFilteringState();
           break;
+        case ColumnType.BOOLEAN:
+          initialState[column.field] = getInitialBooleanColumnFilteringState();
       }
     }
   }
@@ -83,16 +114,17 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
     icon: IconName,
     mode: TextColumnFilteringMode
   ) => {
+    const currentState = filteringState[column.field] as TextColumnFilteringState;
     return (
       <MenuItem
         text={text}
         icon={icon}
-        intent={filteringState[column.field].mode === mode ? Intent.PRIMARY : Intent.NONE}
+        intent={currentState.mode === mode ? Intent.PRIMARY : Intent.NONE}
         onClick={() =>
           setFilteringState({
             ...filteringState,
             [column.field]: {
-              ...filteringState[column.field],
+              ...currentState,
               mode: mode,
             } as TextColumnFilteringState,
           })
@@ -166,16 +198,17 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
     icon: IconName,
     mode: NumberColumnFilteringMode
   ) => {
+    const currentState = filteringState[column.field] as NumberColumnFilteringState;
     return (
       <MenuItem
         text={text}
         icon={icon}
-        intent={filteringState[column.field].mode === mode ? Intent.PRIMARY : Intent.NONE}
+        intent={currentState.mode === mode ? Intent.PRIMARY : Intent.NONE}
         onClick={() =>
           setFilteringState({
             ...filteringState,
             [column.field]: {
-              ...filteringState[column.field],
+              ...currentState,
               mode: mode,
             } as NumberColumnFilteringState,
           })
@@ -255,6 +288,35 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
     </th>
   );
 
+  const renderBooleanFilterControls = (column: ColumnProps<T>) => {
+    const currentState = filteringState[column.field] as BooleanColumnFilteringState;
+    return (
+      <th key={column.field} className="filter-cell">
+        <BooleanSelect
+          items={[OptionalBoolean.NONE, OptionalBoolean.TRUE, OptionalBoolean.FALSE]}
+          itemRenderer={(item: OptionalBoolean, { handleClick }) => (
+            <MenuItem text={getValueBasedOnOptionalBoolean(item, "None", "True", "False")} onClick={handleClick} />
+          )}
+          onItemSelect={(value: OptionalBoolean) => {
+            setFilteringState({
+              ...filteringState,
+              [column.field]: {
+                ...currentState,
+                value: value,
+              } as BooleanColumnFilteringState,
+            });
+          }}
+          filterable={false}
+        >
+          <Button
+            text={getValueBasedOnOptionalBoolean(currentState.value, "Select...", "True", "False")}
+            rightIcon={IconNames.DoubleCaretVertical}
+          />
+        </BooleanSelect>
+      </th>
+    );
+  };
+
   const renderFilterControlsBasedOnType = (column: ColumnProps<T>) => {
     switch (column.type) {
       case ColumnType.TEXT:
@@ -262,6 +324,7 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
       case ColumnType.NUMBER:
         return renderNumberFilterControls(column);
       case ColumnType.BOOLEAN:
+        return renderBooleanFilterControls(column);
       default:
         return renderPlaceholder(column);
     }
@@ -301,6 +364,14 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
             result = result.filter(d => d[key] == numberFilteringState.value);
             break;
           }
+          break;
+        case ColumnType.BOOLEAN:
+          const booleanFilteringState = filteringState[key] as BooleanColumnFilteringState;
+          if (filteringState[key].value != OptionalBoolean.NONE) {
+            result = result.filter(d => d[key] == booleanFilteringState.value);
+            break;
+          }
+          break;
       }
     }
     return result;
