@@ -296,6 +296,7 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
       </th>
     );
   };
+
   const renderBooleanFilterControls = (column: ColumnProps<T>) => {
     const currentState = filteringState[column.field] as BooleanColumnFilteringState;
     return (
@@ -348,7 +349,7 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
       switch (filteringState[key].type) {
         case ColumnType.TEXT:
           const textFilteringState = filteringState[key] as TextColumnFilteringState;
-          if (filteringState[key].value !== "") {
+          if (textFilteringState.value !== "") {
             const filterValue = textFilteringState.value.toLocaleLowerCase();
             switch (textFilteringState.mode) {
               case TextColumnFilteringMode.CONTAINS:
@@ -368,14 +369,24 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
           break;
         case ColumnType.NUMBER:
           const numberFilteringState = filteringState[key] as NumberColumnFilteringState;
-          if (filteringState[key].value) {
-            result = result.filter(d => d[key] == numberFilteringState.value);
-            break;
+          if (numberFilteringState.value != NumericInput.VALUE_EMPTY) {
+            switch (numberFilteringState.mode) {
+              case NumberColumnFilteringMode.EQUALS:
+                result = result.filter(d => d[key].toString() === numberFilteringState.value);
+                break;
+              case NumberColumnFilteringMode.EQUALS_NOT:
+                console.log(
+                  numberFilteringState.value,
+                  result.map(d => d[key])
+                );
+                result = result.filter(d => d[key].toString() !== numberFilteringState.value);
+                break;
+            }
           }
           break;
         case ColumnType.BOOLEAN:
           const booleanFilteringState = filteringState[key] as BooleanColumnFilteringState;
-          if (filteringState[key].value != OptionalBoolean.NONE) {
+          if (booleanFilteringState.value != OptionalBoolean.NONE) {
             result = result.filter(d => d[key] == booleanFilteringState.value);
             break;
           }
