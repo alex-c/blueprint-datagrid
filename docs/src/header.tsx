@@ -10,7 +10,7 @@ export const Header = () => {
         <Navbar.Group align={Alignment.LEFT}>
           <Icon icon={IconNames.JoinTable} style={{ marginRight: "5px" }} />
           <Navbar.Heading>
-            <strong>Blueprint Datagrid Demo</strong>
+            <strong>Blueprint Datagrid</strong>
           </Navbar.Heading>
         </Navbar.Group>
         <Navbar.Group align={Alignment.RIGHT}>

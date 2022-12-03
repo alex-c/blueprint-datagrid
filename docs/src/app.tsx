@@ -1,6 +1,7 @@
 import React from "react";
 import { Header } from "./header";
 import { Classes, Menu } from "@blueprintjs/core";
+import { HomePage } from "./pages/page-home";
 import { NoDataPage } from "./pages/page-no-data";
 import { PaginationPage } from "./pages/page-pagination";
 import { SortingPage } from "./pages/page-sorting";
@@ -19,7 +20,8 @@ function App() {
       <div id="container">
         <nav id="menu">
           <Menu className={Classes.ELEVATION_1}>
-            <MenuLink path="/" title="Basics" />
+            <MenuLink path="/" title="Home" />
+            <MenuLink path="basics" title="Basics" />
             <MenuLink path="no-data" title="No Data" />
             <MenuLink path="pagination" title="Pagination" />
             <MenuLink path="sorting" title="Sorting" />
@@ -30,7 +32,8 @@ function App() {
         </nav>
         <main id="content">
           <Routes>
-            <Route index element={<BasicsPage />} />
+            <Route index element={<HomePage />} />
+            <Route path="basics" element={<BasicsPage />} />
             <Route path="no-data" element={<NoDataPage />} />
             <Route path="pagination" element={<PaginationPage />} />
             <Route path="sorting" element={<SortingPage />} />
