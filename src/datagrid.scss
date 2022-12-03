@@ -24,7 +24,7 @@
     .bp4-input {
       box-shadow: none;
     }
-    .bp4-button {
+    .bp4-button:not(.bp4-minimal) {
       box-shadow: none !important;
       border-radius: 0 !important;
       width: 100% !important;
