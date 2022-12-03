@@ -217,77 +217,85 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
     );
   };
 
-  const renderNumberFilterControls = (column: ColumnProps<T>) => (
-    <th key={column.field} className="filter-cell">
-      <InputGroup
-        leftElement={
-          <Popover2
-            content={
-              <Menu>
-                {renderNumberFilterModeControl(column, "equals", IconNames.Equals, NumberColumnFilteringMode.EQUALS)}
-                {renderNumberFilterModeControl(
-                  column,
-                  "not equal to",
-                  IconNames.NotEqualTo,
-                  NumberColumnFilteringMode.EQUALS_NOT
-                )}
-                {renderNumberFilterModeControl(
-                  column,
-                  "greater than",
-                  IconNames.GreaterThan,
-                  NumberColumnFilteringMode.GREATER
-                )}
-                {renderNumberFilterModeControl(
-                  column,
-                  "greater than or equal to",
-                  IconNames.GreaterThanOrEqualTo,
-                  NumberColumnFilteringMode.GREATER_EQUALS
-                )}
-                {renderNumberFilterModeControl(column, "less than", IconNames.LessThan, NumberColumnFilteringMode.LESS)}
-                {renderNumberFilterModeControl(
-                  column,
-                  "less than or equal to",
-                  IconNames.LessThanOrEqualTo,
-                  NumberColumnFilteringMode.LESS_EQUALS
-                )}
-              </Menu>
-            }
-            placement="bottom"
-          >
-            <Button icon={IconNames.Filter} minimal />
-          </Popover2>
-        }
-        rightElement={
-          <Button
-            icon={IconNames.Cross}
-            onClick={() =>
-              setFilteringState({
-                ...filteringState,
-                [column.field]: {
-                  ...filteringState[column.field],
-                  value: NumericInput.VALUE_EMPTY,
-                } as NumberColumnFilteringState,
-              })
-            }
-            disabled={filteringState[column.field].value === NumericInput.VALUE_EMPTY}
-            minimal
-          />
-        }
-        value={filteringState[column.field].value?.toString()}
-        onChange={e =>
-          setFilteringState({
-            ...filteringState,
-            [column.field]: {
-              ...filteringState[column.field],
-              value: e.target.value,
-            } as NumberColumnFilteringState,
-          })
-        }
-        fill
-      />
-    </th>
-  );
-
+  const renderNumberFilterControls = (column: ColumnProps<T>) => {
+    const currentState = filteringState[column.field] as NumberColumnFilteringState;
+    return (
+      <th key={column.field} className="filter-cell">
+        <NumericInput
+          buttonPosition={"none"}
+          leftElement={
+            <Popover2
+              content={
+                <Menu>
+                  {renderNumberFilterModeControl(column, "equals", IconNames.Equals, NumberColumnFilteringMode.EQUALS)}
+                  {renderNumberFilterModeControl(
+                    column,
+                    "not equal to",
+                    IconNames.NotEqualTo,
+                    NumberColumnFilteringMode.EQUALS_NOT
+                  )}
+                  {renderNumberFilterModeControl(
+                    column,
+                    "greater than",
+                    IconNames.GreaterThan,
+                    NumberColumnFilteringMode.GREATER
+                  )}
+                  {renderNumberFilterModeControl(
+                    column,
+                    "greater than or equal to",
+                    IconNames.GreaterThanOrEqualTo,
+                    NumberColumnFilteringMode.GREATER_EQUALS
+                  )}
+                  {renderNumberFilterModeControl(
+                    column,
+                    "less than",
+                    IconNames.LessThan,
+                    NumberColumnFilteringMode.LESS
+                  )}
+                  {renderNumberFilterModeControl(
+                    column,
+                    "less than or equal to",
+                    IconNames.LessThanOrEqualTo,
+                    NumberColumnFilteringMode.LESS_EQUALS
+                  )}
+                </Menu>
+              }
+              placement="bottom"
+            >
+              <Button icon={IconNames.Filter} minimal />
+            </Popover2>
+          }
+          rightElement={
+            <Button
+              icon={IconNames.Cross}
+              onClick={() =>
+                setFilteringState({
+                  ...filteringState,
+                  [column.field]: {
+                    ...currentState,
+                    value: NumericInput.VALUE_EMPTY,
+                  } as NumberColumnFilteringState,
+                })
+              }
+              disabled={currentState.value === NumericInput.VALUE_EMPTY}
+              minimal
+            />
+          }
+          value={currentState.value}
+          onValueChange={(_, value) =>
+            setFilteringState({
+              ...filteringState,
+              [column.field]: {
+                ...currentState,
+                value: value,
+              } as NumberColumnFilteringState,
+            })
+          }
+          fill
+        />
+      </th>
+    );
+  };
   const renderBooleanFilterControls = (column: ColumnProps<T>) => {
     const currentState = filteringState[column.field] as BooleanColumnFilteringState;
     return (
