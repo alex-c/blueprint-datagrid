@@ -6,7 +6,7 @@ import { DataSourceType } from "./datagrid";
 import { Popover2 } from "@blueprintjs/popover2";
 import { Select2 } from "@blueprintjs/select";
 
-const BooleanSelect = Select2.ofType<OptionalBoolean>();
+const BooleanSelect = Select2<OptionalBoolean>;
 
 interface ColumnFilteringState {
   type: ColumnType;
