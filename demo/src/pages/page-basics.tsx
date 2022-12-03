@@ -1,4 +1,5 @@
 import { Code } from "@blueprintjs/core";
+import { Link } from "react-router-dom";
 import { Column, ColumnType, Datagrid } from "../../../build";
 import { useAppSelector } from "../app/hooks";
 import { Page } from "../components/page";
@@ -65,7 +66,7 @@ export const BasicsPage = () => {
           <Column field="arena" label="Arena" />
         </Datagrid>
         <p>
-          For more options for customizting cell rendering, see <a href="#ex-cell-customization">Cell Customization</a>.
+          For more options for customizting cell rendering, see <Link to={"cell-customization"}>Cell Customization</Link>.
         </p>
       </Section>
     </Page>
