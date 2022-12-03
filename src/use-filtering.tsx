@@ -370,16 +370,25 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
         case ColumnType.NUMBER:
           const numberFilteringState = filteringState[key] as NumberColumnFilteringState;
           if (numberFilteringState.value != NumericInput.VALUE_EMPTY) {
+            const filterValue = Number(numberFilteringState.value);
             switch (numberFilteringState.mode) {
               case NumberColumnFilteringMode.EQUALS:
-                result = result.filter(d => d[key].toString() === numberFilteringState.value);
+                result = result.filter(d => d[key] === filterValue);
                 break;
               case NumberColumnFilteringMode.EQUALS_NOT:
-                console.log(
-                  numberFilteringState.value,
-                  result.map(d => d[key])
-                );
-                result = result.filter(d => d[key].toString() !== numberFilteringState.value);
+                result = result.filter(d => d[key] !== filterValue);
+                break;
+              case NumberColumnFilteringMode.GREATER:
+                result = result.filter(d => d[key] > filterValue);
+                break;
+              case NumberColumnFilteringMode.GREATER_EQUALS:
+                result = result.filter(d => d[key] >= filterValue);
+                break;
+              case NumberColumnFilteringMode.LESS:
+                result = result.filter(d => d[key] < filterValue);
+                break;
+              case NumberColumnFilteringMode.LESS_EQUALS:
+                result = result.filter(d => d[key] <= filterValue);
                 break;
             }
           }
