@@ -1,6 +1,6 @@
-# Blueprint Datagrid Demo
+# Blueprint Datagrid Docs
 
-Contains examples of the Blueprint Datagrid features, using a local build for quick testing cycles during development.
+Contains documentation and examples for the Blueprint Datagrid library.
 
 To run:
 
@@ -13,3 +13,7 @@ You might need to link the demo app's React to the parent project's React with `
 - Execute `npm link`
 - Navigate to the parent project's main directory
 - Execute `npm link react`
+
+To deploy to Github Pages:
+
+- Run `npm run deploy`
