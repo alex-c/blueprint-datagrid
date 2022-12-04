@@ -6,8 +6,6 @@ import { DataSourceType } from "./datagrid";
 import { Popover2 } from "@blueprintjs/popover2";
 import { Select2 } from "@blueprintjs/select";
 
-const BooleanSelect = Select2<OptionalBoolean>;
-
 interface ColumnFilteringState {
   type: ColumnType;
 }
@@ -301,7 +299,7 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
     const currentState = filteringState[column.field] as BooleanColumnFilteringState;
     return (
       <th key={column.field} className="filter-cell">
-        <BooleanSelect
+        <Select2<OptionalBoolean>
           items={[OptionalBoolean.NONE, OptionalBoolean.TRUE, OptionalBoolean.FALSE]}
           itemRenderer={(item: OptionalBoolean, { handleClick }) => (
             <MenuItem text={getValueBasedOnOptionalBoolean(item, "None", "True", "False")} onClick={handleClick} />
@@ -321,7 +319,7 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
             text={getValueBasedOnOptionalBoolean(currentState.value, "Select...", "True", "False")}
             rightIcon={IconNames.DoubleCaretVertical}
           />
-        </BooleanSelect>
+        </Select2>
       </th>
     );
   };
