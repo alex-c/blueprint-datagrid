@@ -34,17 +34,19 @@ export const HomePage = () => {
 
   return (
     <Page title="Documentation">
-      <p>
-        Welcome to the <strong>Blueprint Datagrid</strong> documentation! <strong>Blueprint Datagrid</strong> is an enhanced table component for{" "}
-        <a href="https://blueprintjs.com/" target="_blank" rel="noreferrer">
-          Blueprint 4
-        </a>
-        . It adds features like paging, sorting and filtering to basic Blueprint tables. <strong>Blueprint Datagrid</strong> is built with Blueprint components and styling and
-        stays faithful to the look-and-feel of the library in both dark and light mode. It supports and is written in Typescript.
-      </p>
+      <Section>
+        <p>
+          Welcome to the <strong>Blueprint Datagrid</strong> documentation! <strong>Blueprint Datagrid</strong> is an enhanced table component for{" "}
+          <a href="https://blueprintjs.com/" target="_blank" rel="noreferrer">
+            Blueprint 4
+          </a>
+          . It adds features like paging, sorting and filtering to basic Blueprint tables. <strong>Blueprint Datagrid</strong> is built with Blueprint components and styling and
+          stays faithful to the look-and-feel of the library in both dark and light mode. It supports and is written in Typescript.
+        </p>
+      </Section>
       <Section title="Example">
         <p>
-          The following example shows most of the current features, like <strong>paging</strong>, <strong>sorting</strong> and <strong>filtering</strong>,{" "}
+          The following example shows most of the current features, like <strong>paging</strong>, <strong>sorting</strong>, <strong>filtering</strong>,{" "}
           <strong>row-level actions</strong> and <strong>custom cell formatting</strong>:
         </p>
         <Example code={combinedExampleCode}>
@@ -91,7 +93,7 @@ export const HomePage = () => {
           the data to use as the contents of the table. The <Code>Datagrid</Code> is mainy configured by passing additional components to it's slot, like <Code>Column</Code>{" "}
           components or the <Code>Pager</Code>:
         </p>
-        <Example code={usageExampleCode}>
+        <Example code={usageExampleCode} showCode>
           <Datagrid dataSource={varieties}>
             <Column field="name" label="Name" />
             <Column field="shuUpperBound" label="Heat (SHU)" type={ColumnType.NUMBER} />
