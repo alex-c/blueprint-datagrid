@@ -26,9 +26,20 @@ export const HomePage = () => {
   const { varieties } = useAppSelector(state => state.varieties);
 
   return (
-    <Page title="Documentation" description="Welcome to the Blueprint Datagrid documentation!">
+    <Page title="Documentation">
+      <p>
+        Welcome to the Blueprint Datagrid documentation! Blueprint Datagrid is an enhanced table component for{" "}
+        <a href="https://blueprintjs.com/" target="_blank" rel="noreferrer">
+          Blueprint 4
+        </a>
+        . It adds features like paging, sorting and filtering to basic Blueprint tables. Blueprint Datagrid is built with Blueprint components and styling and stays faithful to the
+        look-and-feel of the library in both dark and light mode. It supports and is written in Typescript.
+      </p>
       <Section title="Example">
-        <p>The following quick example shows most of the current features, like paging, sorting and filtering, row-level actions and custom cell formatting:</p>
+        <p>
+          The following example shows most of the current features, like <strong>paging</strong>, <strong>sorting</strong> and <strong>filtering</strong>,{" "}
+          <strong>row-level actions</strong> and <strong>custom cell formatting</strong>:
+        </p>
         <Example code={combinedExampleCode}>
           <Datagrid dataSource={varieties}>
             <Column field="name" label="Name" type={ColumnType.TEXT} filter sortable />
