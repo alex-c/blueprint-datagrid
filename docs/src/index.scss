@@ -1,3 +1,4 @@
+@use "sass:meta";
 @import "~normalize.css";
 @import "~@blueprintjs/core/lib/css/blueprint.css";
 @import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
@@ -14,4 +15,11 @@ html,
 body,
 #root {
   height: 100%;
+}
+
+body.bp4-dark {
+  @include meta.load-css("node_modules/highlight.js/styles/github-dark.css");
+}
+body:not(.bp4-dark) {
+  @include meta.load-css("node_modules/highlight.js/styles/github.css");
 }
