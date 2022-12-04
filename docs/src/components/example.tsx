@@ -8,10 +8,11 @@ import "./example.scss";
 interface ExampleProps {
   code: string;
   children: JSX.Element | JSX.Element[];
+  showCode?: boolean;
 }
 
 export const Example = (props: ExampleProps) => {
-  const [showCode, setShowCode] = useState(false);
+  const [showCode, setShowCode] = useState(props.showCode || false);
 
   return (
     <div className="example">

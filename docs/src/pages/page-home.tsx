@@ -1,4 +1,4 @@
-import { Callout, Intent, Tag } from "@blueprintjs/core";
+import { Callout, Code, Intent, Tag } from "@blueprintjs/core";
 import { IconNames } from "@blueprintjs/icons";
 import { Action, Column, ColumnType, Datagrid, Pager } from "../../../build";
 import { useAppSelector } from "../app/hooks";
@@ -22,18 +22,25 @@ const combinedExampleCode = `<Datagrid dataSource={varieties}>
   <Pager elementsPerPage={5} />
 </Datagrid>`;
 
+const usageExampleCode = `<Datagrid dataSource={varieties}>
+  <Column field="name" label="Name" />
+  <Column field="shuUpperBound" label="Heat (SHU)" type={ColumnType.NUMBER} />
+  <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} />
+  <Pager elementsPerPage={5} />
+</Datagrid>`;
+
 export const HomePage = () => {
   const { varieties } = useAppSelector(state => state.varieties);
 
   return (
     <Page title="Documentation">
       <p>
-        Welcome to the Blueprint Datagrid documentation! Blueprint Datagrid is an enhanced table component for{" "}
+        Welcome to the <strong>Blueprint Datagrid</strong> documentation! <strong>Blueprint Datagrid</strong> is an enhanced table component for{" "}
         <a href="https://blueprintjs.com/" target="_blank" rel="noreferrer">
           Blueprint 4
         </a>
-        . It adds features like paging, sorting and filtering to basic Blueprint tables. Blueprint Datagrid is built with Blueprint components and styling and stays faithful to the
-        look-and-feel of the library in both dark and light mode. It supports and is written in Typescript.
+        . It adds features like paging, sorting and filtering to basic Blueprint tables. <strong>Blueprint Datagrid</strong> is built with Blueprint components and styling and
+        stays faithful to the look-and-feel of the library in both dark and light mode. It supports and is written in Typescript.
       </p>
       <Section title="Example">
         <p>
@@ -53,10 +60,45 @@ export const HomePage = () => {
           </Datagrid>
         </Example>
       </Section>
-      <Section title="Getting Started">
+      <Section title="Dependencies">
+        <p>
+          <strong>Blueprint Datagrid</strong> depends on the following <a href="https://blueprintjs.com/">Blueprint 4</a> packages:
+          <ul>
+            <li>
+              <a href="https://www.npmjs.com/package/@blueprintjs/core">@blueprintjs/core</a>
+            </li>
+            <li>
+              <a href="https://www.npmjs.com/package/@blueprintjs/icons">@blueprintjs/icons</a>
+            </li>
+            <li>
+              <a href="https://www.npmjs.com/package/@blueprintjs/popover2">@blueprintjs/popover2</a>
+            </li>
+            <li>
+              <a href="https://www.npmjs.com/package/@blueprintjs/select">@blueprintjs/select</a>
+            </li>
+          </ul>
+          The exact versions of these packages can be found in the project's <a href="https://github.com/alex-c/blueprint-datagrid/blob/main/package.json">package.json</a>.
+        </p>
+      </Section>
+      <Section title="Installation">
         <Callout icon={IconNames.WRENCH} intent={Intent.WARNING}>
           This section is work in progress!
         </Callout>
+      </Section>
+      <Section title="Usage">
+        <p>
+          A <strong>Blueprint Datagrid</strong> is created with the <Code>Datagrid</Code> component and by passing it an array of objects as <Code>dataSource</Code>, which contain
+          the data to use as the contents of the table. The <Code>Datagrid</Code> is mainy configured by passing additional components to it's slot, like <Code>Column</Code>{" "}
+          components or the <Code>Pager</Code>:
+        </p>
+        <Example code={usageExampleCode}>
+          <Datagrid dataSource={varieties}>
+            <Column field="name" label="Name" />
+            <Column field="shuUpperBound" label="Heat (SHU)" type={ColumnType.NUMBER} />
+            <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} />
+            <Pager elementsPerPage={5} />
+          </Datagrid>
+        </Example>
       </Section>
     </Page>
   );
