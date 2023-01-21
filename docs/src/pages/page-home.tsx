@@ -1,7 +1,8 @@
-import { Callout, Code, Intent, Tag } from "@blueprintjs/core";
+import { Code, Intent, Tag } from "@blueprintjs/core";
 import { IconNames } from "@blueprintjs/icons";
 import { Action, Column, ColumnType, Datagrid, Pager } from "../../../build";
 import { useAppSelector } from "../app/hooks";
+import { CodeBlock } from "../components/code-block";
 import { Example } from "../components/example";
 import { Page } from "../components/page";
 import { Section } from "../components/section";
@@ -83,9 +84,11 @@ export const HomePage = () => {
         </p>
       </Section>
       <Section title="Installation">
-        <Callout icon={IconNames.WRENCH} intent={Intent.WARNING}>
-          This section is work in progress!
-        </Callout>
+        <p>
+          Install <strong>Blueprint Datagrid</strong> with <Code>npm</Code> (or the package manager of your choice):
+          <br />
+          <CodeBlock code="npm install @alex-c/blueprint-datagrid" />
+        </p>
       </Section>
       <Section title="Usage">
         <p>

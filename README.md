@@ -6,7 +6,7 @@ Documentation and examples can be found on the project's [Github Page](https://a
 
 ### Status
 
-Blueprint Datagrid is currently in active development. Progress is being tracked in [this project](https://github.com/users/alex-c/projects/1). There is no version of Blueprint Datagrid released on NPM yet.
+Blueprint Datagrid is currently in active development. Progress is being tracked in [this project](https://github.com/users/alex-c/projects/1). You can find the current version on [NPM](https://www.npmjs.com/package/@alex-c/blueprint-datagrid).
 
 ## Why
 
@@ -26,4 +26,25 @@ More details and examples can be found in the [documentation](https://alex-c.git
 
 ## Getting Started
 
-🚧 TODO 🚧
+Blueprint Datagrid can be installed using `npm` (or the package manager of your choice):
+
+```
+npm install @alex-c/blueprint-datagrid
+```
+
+In your `react` project, import and use the `Datagrid` component as well as other needed components:
+
+```js
+import { Column, ColumnType, Datagrid, Pager } from "@alex-c/blueprint-datagrid";
+
+//...
+
+<Datagrid dataSource={varieties}>
+  <Column field="name" label="Name" filter />
+  <Column field="shuUpperBound" label="Heat (SHU)" type={ColumnType.NUMBER} sortable />
+  <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} />
+  <Pager elementsPerPage={5} />
+</Datagrid>;
+```
+
+You can find more information on how to use Blueprint Datagrid in the [documentation](https://alex-c.github.io/blueprint-datagrid/).
