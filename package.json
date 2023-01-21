@@ -1,5 +1,5 @@
 {
-  "name": "blueprint-datagrid",
+  "name": "@alex-c/blueprint-datagrid",
   "version": "0.1.0",
   "description": "An enhanced table component for Blueprint 4.",
   "main": "build/index.js",
