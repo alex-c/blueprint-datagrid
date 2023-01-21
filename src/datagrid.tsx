@@ -48,18 +48,17 @@ const parseChildren = <T,>(children: JSX.Element | JSX.Element[]): DatagridDeriv
 export const Datagrid = <T extends DataSourceType>(props: DatagridProps<T>) => {
   const { columns, actions, pagination, placeholder } = parseChildren<T>(props.children);
 
+  const { getCellClassName, renderCell } = useRendering<T>();
+  const { filterData, renderFilterControls } = useFiltering<T>(columns);
+  const { sortData, renderSortingControl } = useSorting<T>(columns);
   const { paginateData, renderPaginationControls } = usePagination<T>(
-    props.dataSource.length,
     pagination?.elementsPerPage,
     pagination?.directInput || false
   );
-  const { sortData, renderSortingControl } = useSorting<T>(columns);
-  const { filterData, renderFilterControls } = useFiltering<T>(columns);
-  const { getCellClassName, renderCell } = useRendering<T>();
 
-  let data = filterData(props.dataSource);
-  data = sortData(data);
-  data = paginateData(data);
+  const filteredData = filterData(props.dataSource);
+  const sortedData = sortData(filteredData);
+  const paginatedData = paginateData(sortedData);
 
   return (
     <div className="datagrid-wrapper">
@@ -77,9 +76,9 @@ export const Datagrid = <T extends DataSourceType>(props: DatagridProps<T>) => {
           {columns.filter(c => c.filter).length > 0 && <tr>{columns.map(renderFilterControls)}</tr>}
         </thead>
         <tbody>
-          {data.length > 0 ? (
+          {paginatedData.length > 0 ? (
             <>
-              {data.map((row, i) => (
+              {paginatedData.map((row, i) => (
                 <tr key={"row-" + i}>
                   {columns.map(col => (
                     <td key={col.field} className={getCellClassName(col)}>
@@ -110,7 +109,7 @@ export const Datagrid = <T extends DataSourceType>(props: DatagridProps<T>) => {
                 </tr>
               ))}
               {pagination &&
-                [...Array(pagination.elementsPerPage - data.length)].map((_, i) => (
+                [...Array(pagination.elementsPerPage - paginatedData.length)].map((_, i) => (
                   <tr key={"row-fill-" + i}>
                     {[...Array(columns.length + (actions.length > 0 ? 1 : 0))].map((_, j) => (
                       <td key={"cell-fill-" + j}>
@@ -132,7 +131,7 @@ export const Datagrid = <T extends DataSourceType>(props: DatagridProps<T>) => {
           )}
         </tbody>
       </HTMLTable>
-      {pagination && <div className="datagrid-bottombar">{renderPaginationControls()}</div>}
+      {pagination && <div className="datagrid-bottombar">{renderPaginationControls(filteredData.length)}</div>}
     </div>
   );
 };

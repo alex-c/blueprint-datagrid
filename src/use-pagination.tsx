@@ -10,21 +10,16 @@ const calculateNumberOfPages = (numberOfElements: number, elementsPerPage: numbe
   return ratio > floored ? floored + 1 : floored === 0 ? 1 : floored;
 };
 
-export const usePagination = <T extends DataSourceType>(
-  numberOfElements: number,
-  elementsPerPage: number | undefined,
-  directInput: boolean
-) => {
+export const usePagination = <T extends DataSourceType>(elementsPerPage: number | undefined, directInput: boolean) => {
   const [activePage, setActivePage] = useState<number>(1);
-  const numberOfPages = elementsPerPage !== undefined ? calculateNumberOfPages(numberOfElements, elementsPerPage) : 1;
 
-  const directInputPage = (page: number) => {
-    if (page >= 1 && page <= numberOfPages) {
-      setActivePage(page);
+  const renderPaginationControls = (numberOfElements: number) => {
+    const numberOfPages = elementsPerPage !== undefined ? calculateNumberOfPages(numberOfElements, elementsPerPage) : 1;
+
+    if (activePage > numberOfPages) {
+      setActivePage(1);
     }
-  };
 
-  const renderPaginationControls = () => {
     return (
       <ButtonGroup>
         <Button icon={IconNames.DoubleChevronLeft} disabled={activePage === 1} onClick={() => setActivePage(1)} />
@@ -39,7 +34,11 @@ export const usePagination = <T extends DataSourceType>(
               min={1}
               max={numberOfPages}
               value={activePage}
-              onValueChange={directInputPage}
+              onValueChange={(page: number) => {
+                if (page >= 1 && page <= numberOfPages) {
+                  setActivePage(page);
+                }
+              }}
               style={{ width: numberOfPages.toString().length * 18 + 32 + "px", textAlign: "right" }}
               buttonPosition="none"
               selectAllOnFocus
@@ -60,7 +59,7 @@ export const usePagination = <T extends DataSourceType>(
                 <Button text={activePage - 1} onClick={() => setActivePage(activePage - 1)} />
               </>
             ) : (
-              [...Array(activePage - 1)].map((_, i) => (
+              [...Array(activePage - 1 >= 0 ? activePage - 1 : 0)].map((_, i) => (
                 <Button key={"button-" + i} text={i + 1} onClick={() => setActivePage(i + 1)} />
               ))
             )}
@@ -72,7 +71,7 @@ export const usePagination = <T extends DataSourceType>(
                 <Button text={".."} disabled />
               </>
             ) : (
-              [...Array(numberOfPages - activePage)].map((_, i) => {
+              [...Array(numberOfPages - activePage >= 0 ? numberOfPages - activePage : 0)].map((_, i) => {
                 const index = i + activePage + 1;
                 return <Button key={"button-" + index} text={index} onClick={() => setActivePage(index)} />;
               })
