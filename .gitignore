@@ -3,6 +3,9 @@
 /build
 bundle-analysis.html
 
+# IntelliJ IDEA files
+/.idea
+
 # Logs
 logs
 *.log
