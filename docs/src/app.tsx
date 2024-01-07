@@ -12,6 +12,7 @@ import { Route, Routes } from "react-router";
 import { DefiningColumnPage } from "./pages/page-defining-columns";
 import { MenuLink } from "./components/menu-link";
 import "./app.scss";
+import { ToolbarsPage } from "./pages/page-toolbars";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Menu className={Classes.ELEVATION_1}>
             <MenuLink path="/" title="Home" />
             <MenuLink path="defining-columns" title="Defining Columns" />
+            <MenuLink path="toolbars" title="Toolbars" />
             <MenuLink path="empty-table" title="Empty Table" />
             <MenuLink path="pagination" title="Pagination" />
             <MenuLink path="sorting" title="Sorting" />
@@ -34,6 +36,7 @@ function App() {
           <Routes>
             <Route index element={<HomePage />} />
             <Route path="defining-columns" element={<DefiningColumnPage />} />
+            <Route path="toolbars" element={<ToolbarsPage />} />
             <Route path="empty-table" element={<EmptyTablePage />} />
             <Route path="pagination" element={<PaginationPage />} />
             <Route path="sorting" element={<SortingPage />} />
