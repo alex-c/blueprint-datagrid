@@ -19,7 +19,6 @@ export const userSlice = createSlice({
   name: "users",
   initialState,
   reducers: {},
-  extraReducers: {},
 });
 
 export const userReducer = userSlice.reducer;

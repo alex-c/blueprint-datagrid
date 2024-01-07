@@ -39,7 +39,7 @@ export const HomePage = () => {
         <p>
           Welcome to the <strong>Blueprint Datagrid</strong> documentation! <strong>Blueprint Datagrid</strong> is an enhanced table component for{" "}
           <a href="https://blueprintjs.com/" target="_blank" rel="noreferrer">
-            Blueprint 4
+            Blueprint 5
           </a>
           . It adds features like paging, sorting and filtering to basic Blueprint tables. <strong>Blueprint Datagrid</strong> is built with Blueprint components and styling and
           stays faithful to the look-and-feel of the library in both dark and light mode. It supports and is written in Typescript.
@@ -65,16 +65,13 @@ export const HomePage = () => {
       </Section>
       <Section title="Dependencies">
         <p>
-          <strong>Blueprint Datagrid</strong> depends on the following <a href="https://blueprintjs.com/">Blueprint 4</a> packages:
+          <strong>Blueprint Datagrid</strong> depends on the following <a href="https://blueprintjs.com/">Blueprint 5</a> packages:
           <ul>
             <li>
               <a href="https://www.npmjs.com/package/@blueprintjs/core">@blueprintjs/core</a>
             </li>
             <li>
               <a href="https://www.npmjs.com/package/@blueprintjs/icons">@blueprintjs/icons</a>
-            </li>
-            <li>
-              <a href="https://www.npmjs.com/package/@blueprintjs/popover2">@blueprintjs/popover2</a>
             </li>
             <li>
               <a href="https://www.npmjs.com/package/@blueprintjs/select">@blueprintjs/select</a>

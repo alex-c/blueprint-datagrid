@@ -1,6 +1,6 @@
 # Blueprint Datagrid
 
-Blueprint Datagrid is an enhanced table component for [Blueprint 4](https://blueprintjs.com/). It adds features like paging, sorting and filtering to basic Blueprint tables. Blueprint Datagrid is built with Blueprint components and styling and stays faithful to the look-and-feel of the library in both dark and light mode. It supports and is written in Typescript.
+Blueprint Datagrid is an enhanced table component for [Blueprint 5](https://blueprintjs.com/). It adds features like paging, sorting and filtering to basic Blueprint tables. Blueprint Datagrid is built with Blueprint components and styling and stays faithful to the look-and-feel of the library in both dark and light mode. It supports and is written in Typescript.
 
 Documentation and examples can be found on the project's [Github Page](https://alex-c.github.io/blueprint-datagrid/)!
 

@@ -9,6 +9,7 @@ To run:
 
 You might need to link the docs app's React to the parent project's React with `npm link`:
 
+- Build the library with `npm run build`
 - Navigate to the docs app's `node_modules/react`
 - Execute `npm link`
 - Navigate to the parent project's main directory

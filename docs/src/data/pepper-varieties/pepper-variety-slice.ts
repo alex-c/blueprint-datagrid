@@ -13,7 +13,6 @@ export const varietySlice = createSlice({
   name: "varieties",
   initialState,
   reducers: {},
-  extraReducers: {},
 });
 
 export const varietyReducer = varietySlice.reducer;

@@ -11,7 +11,7 @@ const initialState = {
 };
 
 const setDarModeActive = (isDarkModeActive: boolean) => {
-  document.body.className = isDarkModeActive ? "bp4-dark" : "bp4-body";
+  document.body.className = isDarkModeActive ? "bp5-dark" : "bp5-body";
 };
 setDarModeActive(initialState.isDarkModeActive);
 
@@ -25,7 +25,6 @@ export const appSlice = createSlice({
       state.isDarkModeActive = action.payload;
     },
   },
-  extraReducers: {},
 });
 
 export const appReducer = appSlice.reducer;

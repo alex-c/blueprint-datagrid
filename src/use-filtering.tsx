@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Button, Icon, InputGroup, Intent, Menu, MenuItem, NumericInput } from "@blueprintjs/core";
+import { Button, Icon, InputGroup, Intent, Menu, MenuItem, NumericInput, Popover } from "@blueprintjs/core";
 import { IconName, IconNames } from "@blueprintjs/icons";
 import { ColumnProps, ColumnType } from "./components/column";
 import { DataSourceType } from "./datagrid";
-import { Popover2 } from "@blueprintjs/popover2";
-import { Select2 } from "@blueprintjs/select";
+import { Select } from "@blueprintjs/select";
 
 interface ColumnFilteringState {
   type: ColumnType;
@@ -135,7 +134,7 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
     <th key={column.field} className="filter-cell">
       <InputGroup
         leftElement={
-          <Popover2
+          <Popover
             content={
               <Menu>
                 {renderTextFilterModeControl(column, "contains", IconNames.Selection, TextColumnFilteringMode.CONTAINS)}
@@ -157,7 +156,7 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
             placement="bottom"
           >
             <Button icon={IconNames.Filter} minimal />
-          </Popover2>
+          </Popover>
         }
         rightElement={
           <Button
@@ -222,7 +221,7 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
         <NumericInput
           buttonPosition={"none"}
           leftElement={
-            <Popover2
+            <Popover
               content={
                 <Menu>
                   {renderNumberFilterModeControl(column, "equals", IconNames.Equals, NumberColumnFilteringMode.EQUALS)}
@@ -261,7 +260,7 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
               placement="bottom"
             >
               <Button icon={IconNames.Filter} minimal />
-            </Popover2>
+            </Popover>
           }
           rightElement={
             <Button
@@ -299,7 +298,7 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
     const currentState = filteringState[column.field] as BooleanColumnFilteringState;
     return (
       <th key={column.field} className="filter-cell">
-        <Select2<OptionalBoolean>
+        <Select<OptionalBoolean>
           items={[OptionalBoolean.NONE, OptionalBoolean.TRUE, OptionalBoolean.FALSE]}
           itemRenderer={(item: OptionalBoolean, { handleClick }) => (
             <MenuItem text={getValueBasedOnOptionalBoolean(item, "None", "True", "False")} onClick={handleClick} />
@@ -319,7 +318,7 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
             text={getValueBasedOnOptionalBoolean(currentState.value, "Select...", "True", "False")}
             rightIcon={IconNames.DoubleCaretVertical}
           />
-        </Select2>
+        </Select>
       </th>
     );
   };

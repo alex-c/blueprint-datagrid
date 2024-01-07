@@ -2,11 +2,10 @@
 @import "~normalize.css";
 @import "~@blueprintjs/core/lib/css/blueprint.css";
 @import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
-@import "~@blueprintjs/popover2/lib/css/blueprint-popover2.css";
 @import "~@blueprintjs/core/lib/scss/variables";
 
 html {
-  .bp4-dark {
+  .bp5-dark {
     background-color: $pt-dark-app-background-color;
   }
 }
@@ -17,9 +16,9 @@ body,
   height: 100%;
 }
 
-body.bp4-dark {
+body.bp5-dark {
   @include meta.load-css("node_modules/highlight.js/styles/github-dark.css");
 }
-body:not(.bp4-dark) {
+body:not(.bp5-dark) {
   @include meta.load-css("node_modules/highlight.js/styles/github.css");
 }
