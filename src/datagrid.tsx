@@ -109,7 +109,12 @@ export const Datagrid = <T extends DataSourceType>(props: DatagridProps<T>) => {
   };
 
   const renderToolbarSection = (elements: JSX.Element[]) => {
-    return elements.filter(e => e.type === Pager).length > 0 && renderPaginationControls(filteredData.length)
+    return(
+        <>
+          {elements.filter(e => e.type !== Pager)}
+          {elements.filter(e => e.type === Pager).length > 0 && renderPaginationControls(filteredData.length)}
+        </>
+    );
   }
 
   return (
