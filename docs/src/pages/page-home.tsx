@@ -1,6 +1,6 @@
-import { Code, Intent, Tag } from "@blueprintjs/core";
+import { Alignment, Code, Intent, Tag } from "@blueprintjs/core";
 import { IconNames } from "@blueprintjs/icons";
-import { Action, Column, ColumnType, Datagrid, Pager } from "../../../build";
+import { Action, Column, ColumnType, Datagrid, Pager, Toolbar, ToolbarPosition } from "../../../build";
 import { useAppSelector } from "../app/hooks";
 import { CodeBlock } from "../components/code-block";
 import { Example } from "../components/example";
@@ -20,14 +20,18 @@ const combinedExampleCode = `<Datagrid dataSource={varieties}>
   <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} filter sortable />
   <Action icon={IconNames.EDIT} intent={Intent.PRIMARY} onClick={editVarietyAction} />
   <Action icon={IconNames.TRASH} intent={Intent.DANGER} onClick={deleteVarietyAction} />
-  <Pager elementsPerPage={5} />
+  <Toolbar position={ToolbarPosition.BOTTOM}>
+    <Pager elementsPerPage={5} align={Alignment.RIGHT} />
+  </Toolbar>
 </Datagrid>`;
 
 const usageExampleCode = `<Datagrid dataSource={varieties}>
   <Column field="name" label="Name" />
   <Column field="shuUpperBound" label="Heat (SHU)" type={ColumnType.NUMBER} />
   <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} />
-  <Pager elementsPerPage={5} />
+  <Toolbar position={ToolbarPosition.BOTTOM}>
+    <Pager elementsPerPage={5} align={Alignment.RIGHT} />
+  </Toolbar>
 </Datagrid>`;
 
 export const HomePage = () => {
@@ -37,17 +41,21 @@ export const HomePage = () => {
     <Page title="Documentation">
       <Section>
         <p>
-          Welcome to the <strong>Blueprint Datagrid</strong> documentation! <strong>Blueprint Datagrid</strong> is an enhanced table component for{" "}
+          Welcome to the <strong>Blueprint Datagrid</strong> documentation! <strong>Blueprint Datagrid</strong> is an
+          enhanced table component for{" "}
           <a href="https://blueprintjs.com/" target="_blank" rel="noreferrer">
             Blueprint 5
           </a>
-          . It adds features like paging, sorting and filtering to basic Blueprint tables. <strong>Blueprint Datagrid</strong> is built with Blueprint components and styling and
-          stays faithful to the look-and-feel of the library in both dark and light mode. It supports and is written in Typescript.
+          . It adds features like paging, sorting and filtering to basic Blueprint tables. <strong>Blueprint
+          Datagrid</strong> is built with Blueprint components and styling and
+          stays faithful to the look-and-feel of the library in both dark and light mode. It supports and is written in
+          Typescript.
         </p>
       </Section>
       <Section title="Example">
         <p>
-          The following example shows most of the current features, like <strong>paging</strong>, <strong>sorting</strong>, <strong>filtering</strong>,{" "}
+          The following example shows most of the current features,
+          like <strong>paging</strong>, <strong>sorting</strong>, <strong>filtering</strong>,{" "}
           <strong>row-level actions</strong> and <strong>custom cell formatting</strong>:
         </p>
         <Example code={combinedExampleCode}>
@@ -59,13 +67,16 @@ export const HomePage = () => {
             <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} filter sortable />
             <Action icon={IconNames.EDIT} intent={Intent.PRIMARY} onClick={editVarietyAction} />
             <Action icon={IconNames.TRASH} intent={Intent.DANGER} onClick={deleteVarietyAction} />
-            <Pager elementsPerPage={5} />
+            <Toolbar position={ToolbarPosition.BOTTOM}>
+              <Pager elementsPerPage={5} align={Alignment.RIGHT} />
+            </Toolbar>
           </Datagrid>
         </Example>
       </Section>
       <Section title="Dependencies">
         <p>
-          <strong>Blueprint Datagrid</strong> depends on the following <a href="https://blueprintjs.com/">Blueprint 5</a> packages:
+          <strong>Blueprint Datagrid</strong> depends on the following <a href="https://blueprintjs.com/">Blueprint
+          5</a> packages:
           <ul>
             <li>
               <a href="https://www.npmjs.com/package/@blueprintjs/core">@blueprintjs/core</a>
@@ -77,7 +88,8 @@ export const HomePage = () => {
               <a href="https://www.npmjs.com/package/@blueprintjs/select">@blueprintjs/select</a>
             </li>
           </ul>
-          The exact versions of these packages can be found in the project's <a href="https://github.com/alex-c/blueprint-datagrid/blob/main/package.json">package.json</a>.
+          The exact versions of these packages can be found in the project's <a
+          href="https://github.com/alex-c/blueprint-datagrid/blob/main/package.json">package.json</a>.
         </p>
       </Section>
       <Section title="Installation">
@@ -89,8 +101,10 @@ export const HomePage = () => {
       </Section>
       <Section title="Usage">
         <p>
-          A <strong>Blueprint Datagrid</strong> is created with the <Code>Datagrid</Code> component and by passing it an array of objects as <Code>dataSource</Code>, which contain
-          the data to use as the contents of the table. The <Code>Datagrid</Code> is mainy configured by passing additional components to it's slot, like <Code>Column</Code>{" "}
+          A <strong>Blueprint Datagrid</strong> is created with the <Code>Datagrid</Code> component and by passing it an
+          array of objects as <Code>dataSource</Code>, which contain
+          the data to use as the contents of the table. The <Code>Datagrid</Code> is mainy configured by passing
+          additional components to it's slot, like <Code>Column</Code>{" "}
           components or the <Code>Pager</Code>:
         </p>
         <Example code={usageExampleCode} showCode>
@@ -98,7 +112,9 @@ export const HomePage = () => {
             <Column field="name" label="Name" />
             <Column field="shuUpperBound" label="Heat (SHU)" type={ColumnType.NUMBER} />
             <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} />
-            <Pager elementsPerPage={5} />
+            <Toolbar position={ToolbarPosition.BOTTOM}>
+              <Pager elementsPerPage={5} align={Alignment.RIGHT} />
+            </Toolbar>
           </Datagrid>
         </Example>
       </Section>

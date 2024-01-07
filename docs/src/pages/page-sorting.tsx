@@ -1,5 +1,5 @@
-import { Code } from "@blueprintjs/core";
-import { Column, ColumnType, Datagrid, Pager } from "../../../build";
+import { Alignment, Code } from "@blueprintjs/core";
+import { Column, ColumnType, Datagrid, Pager, Toolbar, ToolbarPosition } from "../../../build";
 import { useAppSelector } from "../app/hooks";
 import { Example } from "../components/example";
 import { Page } from "../components/page";
@@ -10,7 +10,9 @@ const sortableCode = `<Datagrid dataSource={users}>
   <Column field="name" label="Name" sortable />
   <Column field="age" label="Age" type={ColumnType.NUMBER} sortable />
   <Column field="enabled" label="Enabled" type={ColumnType.BOOLEAN} sortable />
-  <Pager elementsPerPage={10} />
+  <Toolbar position={ToolbarPosition.BOTTOM}>
+    <Pager elementsPerPage={10} align={Alignment.RIGHT} />
+  </Toolbar>
 </Datagrid>`;
 
 export const SortingPage = () => {
@@ -28,7 +30,9 @@ export const SortingPage = () => {
             <Column field="name" label="Name" sortable />
             <Column field="age" label="Age" type={ColumnType.NUMBER} sortable />
             <Column field="enabled" label="Enabled" type={ColumnType.BOOLEAN} sortable />
-            <Pager elementsPerPage={10} />
+            <Toolbar position={ToolbarPosition.BOTTOM}>
+              <Pager elementsPerPage={10} align={Alignment.RIGHT} />
+            </Toolbar>
           </Datagrid>
         </Example>
       </Section>

@@ -69,7 +69,26 @@ $dark-table-border-color: $pt-dark-divider-white !default;
   }
 }
 
-.datagrid-bottombar {
-  margin-top: 10px;
-  text-align: right;
+.datagrid-toolbar {
+  display: flex;
+  justify-content: space-between;
+
+  // Toolbar position in regard to the grid
+  &.toolbar-top {
+    margin-bottom: 10px;
+  }
+  &.toolbar-bottom {
+    margin-top: 10px;
+  }
+
+  // Alignment of items inside the toolbar
+  .toolbar-left {
+    text-align: left;
+  }
+  .toolbar-center {
+    text-align: center;
+  }
+  .toolbar-right {
+    text-align: right;
+  }
 }

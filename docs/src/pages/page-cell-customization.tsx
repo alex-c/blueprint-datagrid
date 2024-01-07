@@ -1,6 +1,6 @@
-import { Code, Icon, Intent, Tag } from "@blueprintjs/core";
+import { Alignment, Code, Icon, Intent, Tag } from "@blueprintjs/core";
 import { IconNames } from "@blueprintjs/icons";
-import { Column, ColumnType, Datagrid, Pager } from "../../../build";
+import { Column, ColumnType, Datagrid, Pager, Toolbar, ToolbarPosition } from "../../../build";
 import { useAppSelector } from "../app/hooks";
 import { Example } from "../components/example";
 import { Page } from "../components/page";
@@ -30,7 +30,9 @@ const renderCode = `const userRenderer = (u: User) => (
   <Column field="name" label="User" sortable renderer={userRenderer} />
   <Column field="age" label="Age" type={ColumnType.NUMBER} sortable />
   <Column field="enabled" label="Enabled" type={ColumnType.BOOLEAN} />
-  <Pager elementsPerPage={10} />
+  <Toolbar position={ToolbarPosition.BOTTOM}>
+    <Pager elementsPerPage={10} align={Alignment.RIGHT} />
+  </Toolbar>
 </Datagrid>`;
 
 const format = new Intl.NumberFormat("en-US");
@@ -78,7 +80,9 @@ export const CellCustomizationPage = () => {
             <Column field="name" label="User" sortable renderer={userRenderer} />
             <Column field="age" label="Age" type={ColumnType.NUMBER} sortable />
             <Column field="enabled" label="Enabled" type={ColumnType.BOOLEAN} />
-            <Pager elementsPerPage={10} />
+            <Toolbar position={ToolbarPosition.BOTTOM}>
+              <Pager elementsPerPage={10} align={Alignment.RIGHT} />
+            </Toolbar>
           </Datagrid>
         </Example>
       </Section>

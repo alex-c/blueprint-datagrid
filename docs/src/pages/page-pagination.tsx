@@ -1,5 +1,5 @@
-import { Code } from "@blueprintjs/core";
-import { Column, ColumnType, Datagrid, Pager } from "../../../build";
+import { Alignment, Code } from "@blueprintjs/core";
+import { Column, ColumnType, Datagrid, Pager, Toolbar, ToolbarPosition } from "../../../build";
 import { useAppSelector } from "../app/hooks";
 import { Example } from "../components/example";
 import { Page } from "../components/page";
@@ -12,7 +12,9 @@ const paginationCode = `<Datagrid dataSource={users}>
   <Column field="name" label="Name" />
   <Column field="age" label="Age" type={ColumnType.NUMBER} />
   <Column field="enabled" label="Enabled" type={ColumnType.BOOLEAN} />
-  <Pager elementsPerPage={10} />
+  <Toolbar position={ToolbarPosition.BOTTOM}>
+    <Pager elementsPerPage={10} align={Alignment.RIGHT} />
+  </Toolbar>
 </Datagrid>`;
 
 const directInputPaginationCode = `<Datagrid dataSource={users}>
@@ -20,7 +22,9 @@ const directInputPaginationCode = `<Datagrid dataSource={users}>
   <Column field="name" label="Name" />
   <Column field="age" label="Age" type={ColumnType.NUMBER} />
   <Column field="enabled" label="Enabled" type={ColumnType.BOOLEAN} />
-  <Pager elementsPerPage={10} directInput />
+  <Toolbar position={ToolbarPosition.BOTTOM}>
+    <Pager elementsPerPage={10} align={Alignment.RIGHT} directInput />
+  </Toolbar>
 </Datagrid>`;
 
 export const PaginationPage = () => {
@@ -44,7 +48,9 @@ export const PaginationPage = () => {
             <Column field="name" label="Name" />
             <Column field="age" label="Age" type={ColumnType.NUMBER} />
             <Column field="enabled" label="Enabled" type={ColumnType.BOOLEAN} />
-            <Pager elementsPerPage={10} />
+            <Toolbar position={ToolbarPosition.BOTTOM}>
+              <Pager elementsPerPage={10} align={Alignment.RIGHT} />
+            </Toolbar>
           </Datagrid>
         </Example>
         <p className="new-section">
@@ -57,7 +63,9 @@ export const PaginationPage = () => {
           <Column field="shuLowerBound" label="Heat Lower Bound (SHU)" type={ColumnType.NUMBER} />
           <Column field="shuUpperBound" label="Heat Upper Bound (SHU)" type={ColumnType.NUMBER} />
           <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} />
-          <Pager elementsPerPage={5} />
+          <Toolbar position={ToolbarPosition.BOTTOM}>
+            <Pager elementsPerPage={10} align={Alignment.RIGHT} />
+          </Toolbar>
         </Datagrid>
       </Section>
       <Section title="Empty Table & Many Pages">
@@ -68,7 +76,9 @@ export const PaginationPage = () => {
           <Column field="shuLowerBound" label="Heat Lower Bound (SHU)" type={ColumnType.NUMBER} />
           <Column field="shuUpperBound" label="Heat Upper Bound (SHU)" type={ColumnType.NUMBER} />
           <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} />
-          <Pager elementsPerPage={5} />
+          <Toolbar position={ToolbarPosition.BOTTOM}>
+            <Pager elementsPerPage={10} align={Alignment.RIGHT} />
+          </Toolbar>
         </Datagrid>
         <p className="new-section">When there are many pages to display, some of the buttons are hidden in the pagination controls.</p>
         <Datagrid dataSource={manyUsers}>
@@ -76,7 +86,9 @@ export const PaginationPage = () => {
           <Column field="name" label="Name" />
           <Column field="age" label="Age" type={ColumnType.NUMBER} />
           <Column field="enabled" label="Enabled" type={ColumnType.BOOLEAN} />
-          <Pager elementsPerPage={10} />
+          <Toolbar position={ToolbarPosition.BOTTOM}>
+            <Pager elementsPerPage={10} align={Alignment.RIGHT} />
+          </Toolbar>
         </Datagrid>
       </Section>
       <Section title="Direct Input Mode">
@@ -91,7 +103,9 @@ export const PaginationPage = () => {
             <Column field="name" label="Name" />
             <Column field="age" label="Age" type={ColumnType.NUMBER} />
             <Column field="enabled" label="Enabled" type={ColumnType.BOOLEAN} />
-            <Pager elementsPerPage={10} directInput />
+            <Toolbar position={ToolbarPosition.BOTTOM}>
+              <Pager elementsPerPage={10} align={Alignment.RIGHT} directInput />
+            </Toolbar>
           </Datagrid>
         </Example>
         <p className="new-section">With many pages:</p>
@@ -100,7 +114,9 @@ export const PaginationPage = () => {
           <Column field="name" label="Name" />
           <Column field="age" label="Age" type={ColumnType.NUMBER} />
           <Column field="enabled" label="Enabled" type={ColumnType.BOOLEAN} />
-          <Pager elementsPerPage={10} directInput />
+          <Toolbar position={ToolbarPosition.BOTTOM}>
+            <Pager elementsPerPage={10} align={Alignment.RIGHT} directInput />
+          </Toolbar>
         </Datagrid>
       </Section>
     </Page>
