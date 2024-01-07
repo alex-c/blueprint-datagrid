@@ -62,7 +62,7 @@ export const Datagrid = <T extends DataSourceType>(props: DatagridProps<T>) => {
 
   return (
     <div className="datagrid-wrapper">
-      <HTMLTable className="datagrid" bordered striped>
+      <HTMLTable className="datagrid" bordered striped compact>
         <thead>
           <tr>
             {columns.map(col => (

@@ -3,8 +3,9 @@
 @import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
 @import "~@blueprintjs/select/lib/css/blueprint-select.css";
 @import "~@blueprintjs/core/lib/scss/variables";
-//@import "~@blueprintjs/core/src/components/html-table/_html-table.scss";
 
+// Since the import isn't working anymore since the Blueprint 5 migration, the following variable are copied from:
+// @import "~@blueprintjs/core/src/components/html-table/_html-table.scss";
 $table-row-height: $pt-grid-size * 4 !default;
 $table-row-height-small: $pt-grid-size * 3 !default;
 $table-border-width: 1px !default;
@@ -25,11 +26,11 @@ $dark-table-border-color: $pt-dark-divider-white !default;
 
   // Filter cells
   .filter-cell {
-    padding: 1px !important;
+    padding: 1px 0 0 1px !important;
     .bp5-input {
       box-shadow: none;
     }
-    .bp5-button:not(.bp4-minimal) {
+    .bp5-button:not(.bp5-minimal) {
       box-shadow: none !important;
       border-radius: 0 !important;
       width: 100% !important;
@@ -45,7 +46,7 @@ $dark-table-border-color: $pt-dark-divider-white !default;
       text-align: right;
     }
     &.datagrid-cell-actions {
-      padding: 0;
+      padding: 1px 0 0 1px !important;
     }
   }
 
