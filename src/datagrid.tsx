@@ -101,15 +101,16 @@ export const Datagrid = <T extends DataSourceType>(props: DatagridProps<T>) => {
     const { leftElements, centerElements, rightElements } = splitToolbarElements(toolbar);
     return (
       <div className={"datagrid-toolbar toolbar-" + toolbar.position}>
-        <div
-          className={"toolbar-left"}>{leftElements.filter(e => e.type === Pager).length > 0 && renderPaginationControls(filteredData.length)}</div>
-        <div
-          className={"toolbar-center"}>{centerElements.filter(e => e.type === Pager).length > 0 && renderPaginationControls(filteredData.length)}</div>
-        <div
-          className={"toolbar-right"}>{rightElements.filter(e => e.type === Pager).length > 0 && renderPaginationControls(filteredData.length)}</div>
+        <div className={"toolbar-left"}>{renderToolbarSection(leftElements)}</div>
+        <div className={"toolbar-center"}>{renderToolbarSection(centerElements)}</div>
+        <div className={"toolbar-right"}>{renderToolbarSection(rightElements)}</div>
       </div>
     );
   };
+
+  const renderToolbarSection = (elements: JSX.Element[]) => {
+    return elements.filter(e => e.type === Pager).length > 0 && renderPaginationControls(filteredData.length)
+  }
 
   return (
     <div className="datagrid-wrapper">
