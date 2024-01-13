@@ -6,7 +6,7 @@ Documentation and examples can be found on the project's [Github Page](https://a
 
 ### Status
 
-Blueprint Datagrid is currently in active development. Progress is being tracked in [this project](https://github.com/users/alex-c/projects/1). You can find the current version on [NPM](https://www.npmjs.com/package/@alex-c/blueprint-datagrid).
+Blueprint Datagrid is currently in active development, which means that the API ist not considered stable. Progress is being tracked in [this project](https://github.com/users/alex-c/projects/1). You can find the current version on [NPM](https://www.npmjs.com/package/@alex-c/blueprint-datagrid).
 
 ## Why
 

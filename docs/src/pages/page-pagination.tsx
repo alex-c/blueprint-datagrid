@@ -40,7 +40,7 @@ export const PaginationPage = () => {
     <Page title="Pagination">
       <Section title="Basics">
         <p>
-          Pagination is activated by adding a <Code>Pager</Code> component and setting the mandatory <Code>Pager.elementsPerPage</Code> property.
+          Pagination is activated by adding a <Code>Pager</Code> component to a <Code>Toolbar</Code> and setting the mandatory <Code>Pager.elementsPerPage</Code> property.
         </p>
         <Example code={paginationCode}>
           <Datagrid dataSource={users}>
