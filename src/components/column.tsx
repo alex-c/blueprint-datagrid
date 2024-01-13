@@ -4,6 +4,7 @@ export enum ColumnType {
   TEXT = "text",
   BOOLEAN = "boolean",
   NUMBER = "number",
+  DATETIME = "datetime",
 }
 
 export interface ColumnProps<T> {
