@@ -13,11 +13,11 @@ const editVarietyAction = (_: any, variety: Variety) => alert(`Editing ${variety
 const deleteVarietyAction = (_: any, variety: Variety) => alert(`Deleting ${variety.name}...`);
 
 const combinedExampleCode = `<Datagrid dataSource={varieties}>
-  <Column field="name" label="Name" type={ColumnType.TEXT} filter sortable />
-  <Column field="species" label="Species" type={ColumnType.TEXT} filter sortable formatter={formatSpecies} />
-  <Column field="shuLowerBound" label="Heat Lower Bound (SHU)" type={ColumnType.NUMBER} filter sortable />
-  <Column field="shuUpperBound" label="Heat Upper Bound (SHU)" type={ColumnType.NUMBER} filter sortable />
-  <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} filter sortable />
+  <Column field="name" label="Name" type={ColumnType.TEXT} filterable sortable />
+  <Column field="species" label="Species" type={ColumnType.TEXT} filterable sortable formatter={formatSpecies} />
+  <Column field="shuLowerBound" label="Heat Lower Bound (SHU)" type={ColumnType.NUMBER} filterable sortable />
+  <Column field="shuUpperBound" label="Heat Upper Bound (SHU)" type={ColumnType.NUMBER} filterable sortable />
+  <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} filterable sortable />
   <Action icon={IconNames.EDIT} intent={Intent.PRIMARY} onClick={editVarietyAction} />
   <Action icon={IconNames.TRASH} intent={Intent.DANGER} onClick={deleteVarietyAction} />
   <Toolbar position={ToolbarPosition.BOTTOM}>
@@ -60,11 +60,11 @@ export const HomePage = () => {
         </p>
         <Example code={combinedExampleCode}>
           <Datagrid dataSource={varieties}>
-            <Column field="name" label="Name" type={ColumnType.TEXT} filter sortable />
-            <Column field="species" label="Species" type={ColumnType.TEXT} filter sortable formatter={formatSpecies} />
-            <Column field="shuLowerBound" label="Heat Lower Bound (SHU)" type={ColumnType.NUMBER} filter sortable />
-            <Column field="shuUpperBound" label="Heat Upper Bound (SHU)" type={ColumnType.NUMBER} filter sortable />
-            <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} filter sortable />
+            <Column field="name" label="Name" type={ColumnType.TEXT} filterable sortable />
+            <Column field="species" label="Species" type={ColumnType.TEXT} filterable sortable formatter={formatSpecies} />
+            <Column field="shuLowerBound" label="Heat Lower Bound (SHU)" type={ColumnType.NUMBER} filterable sortable />
+            <Column field="shuUpperBound" label="Heat Upper Bound (SHU)" type={ColumnType.NUMBER} filterable sortable />
+            <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} filterable sortable />
             <Action icon={IconNames.EDIT} intent={Intent.PRIMARY} onClick={editVarietyAction} />
             <Action icon={IconNames.TRASH} intent={Intent.DANGER} onClick={deleteVarietyAction} />
             <Toolbar position={ToolbarPosition.BOTTOM}>

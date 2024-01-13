@@ -11,7 +11,7 @@ export const FilteringPage = () => {
     <Page title="Filtering">
       <Section>
         <p>
-          When at least one column has filtering activated through <Code>Column.filter</Code>, a filter row appears in the table header. For filtering to works, the column needs a{" "}
+          When at least one column has filtering activated through <Code>Column.filterable</Code>, a filter row appears in the table header. For filtering to works, the column needs a{" "}
           <Code>ColumnType</Code> to be set.
         </p>
       </Section>
@@ -20,8 +20,8 @@ export const FilteringPage = () => {
           For <Code>ColumnType.TEXT</Code> fields, a text input is rendered with 4 possible filtering modes.
         </p>
         <Datagrid dataSource={varieties}>
-          <Column field="name" label="Name" type={ColumnType.TEXT} filter />
-          <Column field="species" label="Species" type={ColumnType.TEXT} filter />
+          <Column field="name" label="Name" type={ColumnType.TEXT} filterable />
+          <Column field="species" label="Species" type={ColumnType.TEXT} filterable />
           <Column field="shuLowerBound" label="Heat Lower Bound (SHU)" type={ColumnType.NUMBER} />
           <Column field="shuUpperBound" label="Heat Upper Bound (SHU)" type={ColumnType.NUMBER} />
           <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} />
@@ -34,8 +34,8 @@ export const FilteringPage = () => {
         <Datagrid dataSource={varieties}>
           <Column field="name" label="Name" type={ColumnType.TEXT} />
           <Column field="species" label="Species" type={ColumnType.TEXT} />
-          <Column field="shuLowerBound" label="Heat Lower Bound (SHU)" type={ColumnType.NUMBER} filter />
-          <Column field="shuUpperBound" label="Heat Upper Bound (SHU)" type={ColumnType.NUMBER} filter />
+          <Column field="shuLowerBound" label="Heat Lower Bound (SHU)" type={ColumnType.NUMBER} filterable />
+          <Column field="shuUpperBound" label="Heat Upper Bound (SHU)" type={ColumnType.NUMBER} filterable />
           <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} />
         </Datagrid>
       </Section>
@@ -48,7 +48,7 @@ export const FilteringPage = () => {
           <Column field="species" label="Species" type={ColumnType.TEXT} />
           <Column field="shuLowerBound" label="Heat Lower Bound (SHU)" type={ColumnType.NUMBER} />
           <Column field="shuUpperBound" label="Heat Upper Bound (SHU)" type={ColumnType.NUMBER} />
-          <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} filter />
+          <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} filterable />
         </Datagrid>
       </Section>
     </Page>

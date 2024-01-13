@@ -131,7 +131,7 @@ export const Datagrid = <T extends DataSourceType>(props: DatagridProps<T>) => {
           ))}
           {actions.length > 0 && <th key="datagrid-actions">Actions</th>}
         </tr>
-        {columns.filter(c => c.filter).length > 0 && <tr>{columns.map(renderFilterControls)}</tr>}
+        {columns.filter(c => c.filterable).length > 0 && <tr>{columns.map(renderFilterControls)}</tr>}
         </thead>
         <tbody>
         {paginatedData.length > 0 ? (

@@ -80,7 +80,7 @@ const getInitialBooleanColumnFilteringState = (): BooleanColumnFilteringState =>
 const getInitialFilteringState = (columns: ColumnProps<any>[]): DatagridFilteringState => {
   const initialState: DatagridFilteringState = {};
   for (const column of columns) {
-    if (column.filter) {
+    if (column.filterable) {
       switch (column.type) {
         case ColumnType.TEXT:
           initialState[column.field] = getInitialTextColumnFilteringState();
@@ -337,7 +337,7 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
   };
 
   const renderFilterControls = (column: ColumnProps<T>) => {
-    return column.filter ? renderFilterControlsBasedOnType(column) : renderPlaceholder(column);
+    return column.filterable ? renderFilterControlsBasedOnType(column) : renderPlaceholder(column);
   };
 
   const filterData = (data: T[]) => {

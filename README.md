@@ -17,8 +17,8 @@ Blueprint has two table components, the basic [HTMLTable](https://blueprintjs.co
 Currently, Blueprint Datagrid supports the following features:
 
 - Paging
-- Sorting for text, number and boolean columns
-- Filtering for text, number and boolean columns
+- Sorting
+- Filtering
 - Row-level actions
 - Custom formatting/rendering of cells
 
@@ -40,7 +40,7 @@ import { Column, ColumnType, Datagrid, Pager } from "@alex-c/blueprint-datagrid"
 //...
 
 <Datagrid dataSource={varieties}>
-  <Column field="name" label="Name" filter />
+  <Column field="name" label="Name" filterable />
   <Column field="shuUpperBound" label="Heat (SHU)" type={ColumnType.NUMBER} sortable />
   <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} />
   <Toolbar position={ToolbarPosition.BOTTOM}>

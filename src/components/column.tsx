@@ -11,9 +11,9 @@ export interface ColumnProps<T> {
   label: string;
   type?: ColumnType;
   sortable?: boolean;
+  filterable?: boolean;
   formatter?: (value: any) => any;
   renderer?: (row: T) => JSX.Element;
-  filter?: boolean;
 }
 
 export const Column = <T,>(_: ColumnProps<T>) => <></>;
