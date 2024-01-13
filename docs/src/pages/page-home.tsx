@@ -102,10 +102,11 @@ export const HomePage = () => {
       <Section title="Usage">
         <p>
           A <strong>Blueprint Datagrid</strong> is created with the <Code>Datagrid</Code> component and by passing it an
-          array of objects as <Code>dataSource</Code>, which contain
+          array of objects as <Code>dataSource</Code>, which contains
           the data to use as the contents of the table. The <Code>Datagrid</Code> is mainy configured by passing
-          additional components to it's slot, like <Code>Column</Code>{" "}
-          components or the <Code>Pager</Code>:
+          additional components to it's slot, like <Code>Column</Code>s or the <Code>Toolbar</Code> component, which can
+          hold additional controls like
+          the <Code>Pager</Code>:
         </p>
         <Example code={usageExampleCode} showCode>
           <Datagrid dataSource={varieties}>
