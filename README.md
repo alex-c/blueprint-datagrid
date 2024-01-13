@@ -43,7 +43,9 @@ import { Column, ColumnType, Datagrid, Pager } from "@alex-c/blueprint-datagrid"
   <Column field="name" label="Name" filter />
   <Column field="shuUpperBound" label="Heat (SHU)" type={ColumnType.NUMBER} sortable />
   <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} />
-  <Pager elementsPerPage={5} />
+  <Toolbar position={ToolbarPosition.BOTTOM}>
+    <Pager elementsPerPage={5} align={Alignment.RIGHT} />
+  </Toolbar>
 </Datagrid>;
 ```
 
