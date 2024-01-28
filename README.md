@@ -35,7 +35,7 @@ npm install @alex-c/blueprint-datagrid
 In your `react` project, import and use the `Datagrid` component as well as other needed components:
 
 ```js
-import { Column, ColumnType, Datagrid, Pager } from "@alex-c/blueprint-datagrid";
+import { Column, ColumnType, Datagrid, Pager, Toolbar, ToolbarPosition } from "@alex-c/blueprint-datagrid";
 
 //...
 
