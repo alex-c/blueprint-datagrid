@@ -6,6 +6,7 @@ import { Section } from "../components/section";
 
 export const FilteringPage = () => {
   const { varieties } = useAppSelector(state => state.varieties);
+  const { users } = useAppSelector(state => state.users);
 
   return (
     <Page title="Filtering">
@@ -49,6 +50,17 @@ export const FilteringPage = () => {
           <Column field="shuLowerBound" label="Heat Lower Bound (SHU)" type={ColumnType.NUMBER} />
           <Column field="shuUpperBound" label="Heat Upper Bound (SHU)" type={ColumnType.NUMBER} />
           <Column field="rare" label="Rare" type={ColumnType.BOOLEAN} filterable />
+        </Datagrid>
+      </Section>
+      <Section title="Datetime Filtering">
+        <p>
+          For <Code>ColumnType.DATETIME</Code> fields, ...TODO!
+        </p>
+        <Datagrid dataSource={users}>
+          <Column field="name" label="Name" type={ColumnType.TEXT} />
+          <Column field="age" label="Age" type={ColumnType.NUMBER} />
+          <Column field="enabled" label="Enabled" type={ColumnType.BOOLEAN} />
+          <Column field="birth" label="Birth" type={ColumnType.DATETIME} filterable />
         </Datagrid>
       </Section>
     </Page>

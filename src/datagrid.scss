@@ -1,8 +1,10 @@
 @import "~normalize.css";
 @import "~@blueprintjs/core/lib/css/blueprint.css";
+@import "~@blueprintjs/core/lib/scss/variables";
 @import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
 @import "~@blueprintjs/select/lib/css/blueprint-select.css";
-@import "~@blueprintjs/core/lib/scss/variables";
+@import "~@blueprintjs/datetime/lib/css/blueprint-datetime.css";
+@import "~@blueprintjs/datetime2/lib/css/blueprint-datetime2.css";
 
 // Since the import isn't working anymore since the Blueprint 5 migration, the following variable are copied from:
 // @import "~@blueprintjs/core/src/components/html-table/_html-table.scss";

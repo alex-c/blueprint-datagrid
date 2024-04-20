@@ -36,9 +36,9 @@
     "url": "https://github.com/alex-c/blueprint-datagrid/issues"
   },
   "homepage": "https://github.com/alex-c/blueprint-datagrid#readme",
-  "dependencies": {},
   "peerDependencies": {
     "@blueprintjs/core": "^5.0.0",
+    "@blueprintjs/datetime2": "^2.2.10",
     "@blueprintjs/icons": "^5.0.0",
     "@blueprintjs/select": "^5.0.0",
     "@types/react": "^16.14.32 || 17 || 18",

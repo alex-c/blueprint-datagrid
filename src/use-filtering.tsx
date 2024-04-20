@@ -4,6 +4,7 @@ import { IconName, IconNames } from "@blueprintjs/icons";
 import { ColumnProps, ColumnType } from "./components/column";
 import { DataSourceType } from "./datagrid";
 import { Select } from "@blueprintjs/select";
+import { DateInput3, TimePrecision } from "@blueprintjs/datetime2";
 
 interface ColumnFilteringState {
   type: ColumnType;
@@ -23,6 +24,12 @@ enum NumberColumnFilteringMode {
   GREATER_EQUALS,
   LESS,
   LESS_EQUALS,
+}
+
+enum DatetimeColumnFilteringMode {
+  EQUALS,
+  IS_BEFORE,
+  IS_AFTER
 }
 
 enum OptionalBoolean {
@@ -56,8 +63,13 @@ interface BooleanColumnFilteringState extends ColumnFilteringState {
   value: OptionalBoolean;
 }
 
+interface DatetimeColumnFilteringState extends ColumnFilteringState {
+  value?: Date;
+  mode: DatetimeColumnFilteringMode
+}
+
 interface DatagridFilteringState {
-  [key: string]: TextColumnFilteringState | NumberColumnFilteringState | BooleanColumnFilteringState;
+  [key: string]: TextColumnFilteringState | NumberColumnFilteringState | BooleanColumnFilteringState | DatetimeColumnFilteringState;
 }
 
 const getInitialTextColumnFilteringState = (): TextColumnFilteringState => ({
@@ -77,6 +89,12 @@ const getInitialBooleanColumnFilteringState = (): BooleanColumnFilteringState =>
   value: OptionalBoolean.NONE,
 });
 
+const getInitialDatetimeFilteringState = (): DatetimeColumnFilteringState => ({
+  type: ColumnType.DATETIME,
+  value: undefined,
+  mode: DatetimeColumnFilteringMode.EQUALS,
+})
+
 const getInitialFilteringState = (columns: ColumnProps<any>[]): DatagridFilteringState => {
   const initialState: DatagridFilteringState = {};
   for (const column of columns) {
@@ -90,6 +108,10 @@ const getInitialFilteringState = (columns: ColumnProps<any>[]): DatagridFilterin
           break;
         case ColumnType.BOOLEAN:
           initialState[column.field] = getInitialBooleanColumnFilteringState();
+          break;
+        case ColumnType.DATETIME:
+          initialState[column.field] = getInitialDatetimeFilteringState();
+          break;
       }
     }
   }
@@ -323,6 +345,47 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
     );
   };
 
+  const renderDatetimeFilterControls = (column: ColumnProps<T>) => {
+    const currentState = filteringState[column.field] as DatetimeColumnFilteringState;
+    return (
+      <th key={column.field} className="filter-cell">
+        <DateInput3
+          value={currentState.value?.toISOString()}
+          popoverProps={{
+            position: "bottom"
+          }}
+          showActionsBar={true}
+          dateFnsFormat={"dd.MM.yyyy"}
+          timePrecision={TimePrecision.MINUTE}
+          minDate={new Date(0)}
+          onChange={(value) => setFilteringState({
+            ...filteringState,
+            [column.field]: {
+              ...currentState,
+              value: value ? new Date(value) : undefined,
+            } as DatetimeColumnFilteringState,
+          })}
+          rightElement={
+            <Button
+              icon={IconNames.Cross}
+              onClick={() =>
+                setFilteringState({
+                  ...filteringState,
+                  [column.field]: {
+                    ...currentState,
+                    value: undefined,
+                  } as DatetimeColumnFilteringState,
+                })
+              }
+              disabled={currentState.value === undefined}
+              minimal
+            />
+          }
+        />
+      </th>
+    );
+  }
+
   const renderFilterControlsBasedOnType = (column: ColumnProps<T>) => {
     switch (column.type) {
       case ColumnType.TEXT:
@@ -331,6 +394,8 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
         return renderNumberFilterControls(column);
       case ColumnType.BOOLEAN:
         return renderBooleanFilterControls(column);
+      case ColumnType.DATETIME:
+        return renderDatetimeFilterControls(column);
       default:
         return renderPlaceholder(column);
     }
@@ -395,6 +460,23 @@ export const useFiltering = <T extends DataSourceType>(columns: ColumnProps<T>[]
           if (booleanFilteringState.value != OptionalBoolean.NONE) {
             result = result.filter(d => d[key] == booleanFilteringState.value);
             break;
+          }
+          break;
+        case ColumnType.DATETIME:
+          const datetimeFilteringState = filteringState[key] as DatetimeColumnFilteringState;
+          if (datetimeFilteringState.value !== undefined) {
+            const filterValue = datetimeFilteringState.value?.getTime();
+            switch (datetimeFilteringState.mode) {
+              case DatetimeColumnFilteringMode.EQUALS:
+                result = result.filter(d => d[key].getTime() === filterValue);
+                break;
+              case DatetimeColumnFilteringMode.IS_BEFORE:
+                result = result.filter(d => d[key].getTime() < filterValue);
+                break;
+              case DatetimeColumnFilteringMode.IS_AFTER:
+                result = result.filter(d => d[key].getTime() > filterValue);
+                break;
+            }
           }
           break;
       }
