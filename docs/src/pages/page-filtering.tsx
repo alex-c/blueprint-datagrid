@@ -54,7 +54,7 @@ export const FilteringPage = () => {
       </Section>
       <Section title="Datetime Filtering">
         <p>
-          For <Code>ColumnType.DATETIME</Code> fields, ...TODO!
+          For <Code>ColumnType.DATETIME</Code> fields, a date/time picker is rendered with 2 possible filtering modes.
         </p>
         <Datagrid dataSource={users}>
           <Column field="name" label="Name" type={ColumnType.TEXT} />

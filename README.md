@@ -16,9 +16,10 @@ Blueprint has two table components, the basic [HTMLTable](https://blueprintjs.co
 
 Currently, Blueprint Datagrid supports the following features:
 
+- Text, number, boolean and date/time columns with appropriate formatting
 - Paging
 - Sorting
-- Filtering
+- Filtering with different filtering modes based on column type
 - Row-level actions
 - Custom formatting/rendering of cells
 
